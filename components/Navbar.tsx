@@ -8,7 +8,6 @@ const Navbar = () => {
     const { data: session } = useSession(); // ดึงข้อมูลผู้ใช้
 
     return (
-    return (
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300">
             <div className="backdrop-blur-2xl bg-black/60 border border-white/10 rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.15)] px-6 py-3 flex items-center justify-between hover:border-purple-500/30 hover:shadow-[0_0_50px_rgba(168,85,247,0.25)] transition-all">
 
@@ -70,7 +69,6 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
-    );
     );
 };
 
