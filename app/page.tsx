@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-white overflow-hidden relative selection:bg-primary/30 selection:text-white">
-      <AnnouncementModal />
+      {/* <AnnouncementModal /> */}
       {/* System Requirements Modal */}
       <Modal
         isOpen={isSysReqOpen}
