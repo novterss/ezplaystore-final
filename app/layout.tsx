@@ -13,6 +13,7 @@ import MusicPlayer from "../components/MusicPlayer";
 import CookieBanner from '@/components/CookieBanner';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import GlobalErrorBoundary from "@/components/GlobalErrorBoundary";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -62,23 +63,23 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${kanit.variable} antialiased text-white font-sans`}>
         <Providers>
-          {/* Background is now handled by InteractiveStarBackground which is fixed position */}
-          {/* Background is now handled by InteractiveStarBackground which is fixed position */}
-          <InteractiveStarBackground />
-          <CursorTrail />
-
-          <UnlockProvider>
-            <LoadingScreen />
+          <GlobalErrorBoundary>
+            {/* Background is now handled by InteractiveStarBackground which is fixed position */}
+            <InteractiveStarBackground />
             <CursorTrail />
-            <Navbar />
-            <NewsTicker />
-            {children}
-            <CookieBanner />
-            <BackToTop />
-            <ThemeSwitcher />
-            <MusicPlayer />
-            <Footer />
-          </UnlockProvider>
+
+            <UnlockProvider>
+              <LoadingScreen />
+              <Navbar />
+              <NewsTicker />
+              {children}
+              <CookieBanner />
+              <BackToTop />
+              <ThemeSwitcher />
+              <MusicPlayer />
+              <Footer />
+            </UnlockProvider>
+          </GlobalErrorBoundary>
         </Providers>
       </body>
     </html>
