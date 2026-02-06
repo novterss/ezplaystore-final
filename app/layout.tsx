@@ -21,13 +21,30 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ezplaystoreth.vercel.app'),
   title: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพ",
   description: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพสำหรับเกมเมอร์และครีเอเตอร์ จำหน่าย Spoofer ปลดแบน HWID คุณภาพสูง และแจกฟรี Plugins, Scripts, Extensions สำหรับ Adobe และ Windows ครบจบในที่เดียว ปลอดภัย เชื่อถือได้ พร้อมซัพพอร์ตตลอด 24 ชม.",
   openGraph: {
     title: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพ",
     description: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพสำหรับเกมเมอร์และครีเอเตอร์ จำหน่าย Spoofer ปลดแบน HWID คุณภาพสูง และแจกฟรี Plugins, Scripts, Extensions สำหรับ Adobe และ Windows ครบจบในที่เดียว ปลอดภัย เชื่อถือได้ พร้อมซัพพอร์ตตลอด 24 ชม.",
-    images: ["/images/ezicon3.png"],
+    url: 'https://ezplaystoreth.vercel.app',
+    siteName: 'EzplaystoreTh',
+    images: [
+      {
+        url: "/images/ezicon3.png",
+        width: 800,
+        height: 600,
+        alt: "EzplaystoreTh Logo",
+      },
+    ],
+    locale: "th_TH",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพ",
+    description: "ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพสำหรับเกมเมอร์และครีเอเตอร์ Plguin, Script, Extension ฟรี!",
+    images: ["/images/ezicon3.png"],
   },
   icons: {
     icon: '/images/ezicon3.png',
