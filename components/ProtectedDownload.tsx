@@ -16,6 +16,7 @@ interface ProtectedDownloadProps {
 const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
   const { data: session } = useSession();
   const router = useRouter();
+  const [isChecking, setIsChecking] = useState(false);
 
   const handleJoinDiscord = () => {
     window.open('https://discord.gg/YMZXUhuMcV', '_blank');
@@ -55,9 +56,7 @@ const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
   }
 
   // 2. Logged In BUT Not in Discord (isMember = false)
-  // 2. Logged In BUT Not in Discord (isMember = false)
   // Check Status logic
-  const [isChecking, setIsChecking] = useState(false);
   const checkMembership = async () => {
     setIsChecking(true);
     if ((session as any)?.accessToken) {
