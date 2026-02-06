@@ -27,7 +27,6 @@ import { Info } from "lucide-react";
 import VideoShowcase from "../components/VideoShowcase";
 import DiscordStatus from "../components/DiscordStatus";
 import AnnouncementModal from "../components/AnnouncementModal";
-import TestimonialsSection from "../components/TestimonialsSection";
 import FAQSection from "../components/FAQSection";
 
 import { useLanguage } from "../contexts/LanguageContext";
@@ -62,7 +61,7 @@ export default function Home() {
       <ActivityFeed />
       <LiveStats />
 
-      <TestimonialsSection />
+      <Testimonials />
 
       {/* HOW TO BUY */}
       <HowToBuy />
@@ -178,7 +177,7 @@ export default function Home() {
       <VideoShowcase />
 
       <Features />
-      <Testimonials />
+
       <FAQ />
       <MarqueeBar />
       <FAQSection />

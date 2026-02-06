@@ -46,7 +46,9 @@ const TabbedFreeZone = () => {
                     <span className="text-sm font-medium text-green-400 tracking-wider uppercase">Free Resources</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
-                    <GlitchText text={t.tabbed.title} className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-teal-500 drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-teal-500 drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]">
+                        {t.tabbed.title}
+                    </span>
                 </h2>
                 <div className="h-1.5 w-32 bg-gradient-to-r from-transparent via-green-500 to-transparent mx-auto rounded-full mb-6 opacity-80" />
                 <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">{t.tabbed.subtitle}</p>

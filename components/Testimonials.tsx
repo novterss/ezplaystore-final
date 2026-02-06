@@ -59,13 +59,13 @@ const Testimonials = () => {
                             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-purple-500/30 shadow-lg group-hover:border-purple-500 transition-colors">
                                 <Image
                                     src={item.image}
-                                    alt={item.user}
+                                    alt={item.name}
                                     fill
                                     className="object-cover"
                                 />
                             </div>
                             <div>
-                                <h3 className="font-bold text-white text-lg">{item.user}</h3>
+                                <h3 className="font-bold text-white text-lg">{item.name}</h3>
                                 <div className="flex gap-1">
                                     {[...Array(5)].map((_, i) => (
                                         <Star

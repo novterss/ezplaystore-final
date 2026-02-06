@@ -57,9 +57,9 @@ export const dictionary = {
             title: "เสียงตอบรับจากลูกค้า",
             subtitle: "Customer Reviews",
             reviews: [
-                { name: "Reze 1", role: "Verified Buyer", comment: "บริการดีมากครับ ส่งของไว สอนละเอียด มือใหม่ทำตามได้สบายเลย", rating: 5, image: "/images/reze.jpg" },
-                { name: "Reze 2", role: "Member", comment: "โปรแกรมเสถียรมาก ไม่โดนแบนจริง คุ้มราคาครับ", rating: 4, image: "/images/reze2.jpg" },
-                { name: "Reze 3", role: "VIP User", comment: "ซัพพอร์ตดี 24 ชม. ถามปุ๊บตอบปั๊บ ประทับใจสุดๆ", rating: 5, image: "/images/reze3.jpg" },
+                { id: 1, name: "Somsak***", role: "Verified Buyer", comment: "บริการดีมากครับ ส่งของไว สอนละเอียด มือใหม่ทำตามได้สบายเลย", rating: 5, image: "/images/reze.jpg" },
+                { id: 2, name: "David***", role: "Member", comment: "โปรแกรมเสถียรมาก ไม่โดนแบนจริง คุ้มราคาครับ", rating: 4, image: "/images/reze2.jpg" },
+                { id: 3, name: "User99***", role: "Verified Buyer", comment: "ซัพพอร์ตดี 24 ชม. ถามปุ๊บตอบปั๊บ ประทับใจสุดๆ", rating: 5, image: "/images/reze3.jpg" },
             ]
         },
         faq: {
@@ -369,7 +369,7 @@ export const dictionary = {
             reviews: [
                 {
                     id: 1,
-                    name: 'Reze 4',
+                    name: 'Kitti***',
                     role: 'Verified Buyer',
                     rating: 5,
                     comment: 'Absolutely insane service! I purchased the key and got it instantly. The guide was super clear too. 10/10.',
@@ -377,16 +377,16 @@ export const dictionary = {
                 },
                 {
                     id: 2,
-                    name: 'Reze 5',
-                    role: 'Gamer',
+                    name: 'James***',
+                    role: 'Member',
                     rating: 4,
                     comment: 'Good product, works as described. Took me a few minutes to set up, but support helped me out. Safe to use.',
                     image: '/images/reze5.jpg'
                 },
                 {
                     id: 3,
-                    name: 'Reze 6',
-                    role: 'VIP User',
+                    name: 'Alex***',
+                    role: 'Verified Buyer',
                     rating: 5,
                     comment: 'Best spoofer on the market right now. Been using it for months on FiveM without any issues. Highly recommended!',
                     image: '/images/reze6.jpg'
@@ -602,7 +602,7 @@ export const dictionary = {
             reviews: [
                 {
                     id: 1,
-                    name: 'Reze 7',
+                    name: 'Li***',
                     role: 'Verified Buyer',
                     rating: 5,
                     comment: '太牛了！发货速度秒到，教程也很详细。用了两天了还没被检测到，稳得一比！',
@@ -610,7 +610,7 @@ export const dictionary = {
                 },
                 {
                     id: 2,
-                    name: 'Reze 8',
+                    name: 'Wang***',
                     role: 'Member',
                     rating: 4,
                     comment: '性价比很高。刚开始不会弄，找了客服，虽然回复稍微慢了一点点，但是完美解决了问题。',
@@ -618,8 +618,8 @@ export const dictionary = {
                 },
                 {
                     id: 3,
-                    name: 'Reze 9',
-                    role: 'VIP User',
+                    name: 'Chen***',
+                    role: 'Verified Buyer',
                     rating: 5,
                     comment: '这家的辅助是我用过最稳的。功能很多，特别是透视很清晰。为了部落！强烈推荐。',
                     image: '/images/reze9.jpg'
@@ -835,7 +835,7 @@ export const dictionary = {
             reviews: [
                 {
                     id: 1,
-                    name: 'Reze 10',
+                    name: 'Tanaka***',
                     role: 'Verified Buyer',
                     rating: 5,
                     comment: '最高です！支払い確認後すぐにキーが届きました。インストールの説明も分かりやすくて、すぐに遊べました。',
@@ -843,7 +843,7 @@ export const dictionary = {
                 },
                 {
                     id: 2,
-                    name: 'Reze 1',
+                    name: 'Sato***',
                     role: 'Member',
                     rating: 4,
                     comment: '機能は素晴らしいですが、設定に少し時間がかかりました。でもサポートが親切に対応してくれたので助かりました。',
@@ -851,8 +851,8 @@ export const dictionary = {
                 },
                 {
                     id: 3,
-                    name: 'Reze 2',
-                    role: 'VIP User',
+                    name: 'Suzuki***',
+                    role: 'Verified Buyer',
                     rating: 5,
                     comment: '今まで使った中で一番安定しています。BANされる気配も全くないし、安心して使えます。おすすめ！',
                     image: '/images/reze2.jpg'

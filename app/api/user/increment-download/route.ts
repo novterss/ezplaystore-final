@@ -11,8 +11,8 @@ const limiter = rateLimit({
 export async function POST(req: NextRequest) {
     const session = await getServerSession();
 
-    if (!session || !session.user?.email) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!session || !session.user?.email || !(session.user as any).isMember) {
+        return NextResponse.json({ error: "Unauthorized or Not a Member" }, { status: 403 });
     }
 
     try {
