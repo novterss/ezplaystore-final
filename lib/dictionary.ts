@@ -7,7 +7,8 @@ export const dictionary = {
             about: "เกี่ยวกับเรา",
             status: "สถานะ",
             login: "เข้าสู่ระบบ",
-            logout: "ออกจากระบบ"
+            logout: "ออกจากระบบ",
+            announcement: "ประกาศ"
         },
         footer: {
             brandDescription: "เราคือผู้ให้บริการจำหน่ายเกมและโปรแกรมระดับเทพ ที่คัดสรรมาเพื่อเกมเมอร์โดยเฉพาะ มั่นใจได้ในคุณภาพและการบริการที่รวดเร็ว",
@@ -226,7 +227,8 @@ export const dictionary = {
             about: "About Us",
             status: "Status",
             login: "Login",
-            logout: "Logout"
+            logout: "Logout",
+            announcement: "Announcement"
         },
         footer: {
             brandDescription: "We provide premium games and software selected specifically for gamers. Guaranteed quality and fast service.",
@@ -459,7 +461,8 @@ export const dictionary = {
             about: "关于我们",
             status: "状态",
             login: "登录",
-            logout: "登出"
+            logout: "登出",
+            announcement: "公告"
         },
         footer: {
             brandDescription: "我们提供专为玩家精选的高级游戏和软件。保证质量和快速服务。",
@@ -692,7 +695,8 @@ export const dictionary = {
             about: "私たちについて",
             status: "ステータス",
             login: "ログイン",
-            logout: "ログアウト"
+            logout: "ログアウト",
+            announcement: "お知らせ"
         },
         footer: {
             brandDescription: "ゲーマーのために厳選されたプレミアムゲームとソフトウェアを提供します。品質と迅速なサービスを保証します。",
