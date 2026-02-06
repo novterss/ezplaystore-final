@@ -19,7 +19,6 @@ import ActivityFeed from "../components/ActivityFeed";
 import FlashSaleCountdown from "../components/FlashSaleCountdown";
 
 import HowToBuy from "../components/HowToBuy";
-import FAQ from "../components/FAQ";
 import Testimonials from "../components/Testimonials";
 import Modal from "../components/Modal";
 import { useState } from "react";
@@ -30,10 +29,13 @@ import AnnouncementModal from "../components/AnnouncementModal";
 import FAQSection from "../components/FAQSection";
 
 import { useLanguage } from "../contexts/LanguageContext";
+import { useWishlist } from "../contexts/WishlistContext";
+import { Heart } from "lucide-react";
 
 export default function Home() {
   const [isSysReqOpen, setIsSysReqOpen] = useState(false);
   const { t } = useLanguage();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const premiumProducts = t.shop.products || [];
 
   return (
@@ -112,6 +114,28 @@ export default function Home() {
                       <div className="w-full h-full bg-gray-800" />
                     )}
 
+                    {/* Wishlist Button */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <button
+                        onClick={() => {
+                          if (isInWishlist(product.id)) {
+                            removeFromWishlist(product.id);
+                          } else {
+                            addToWishlist({
+                              id: product.id,
+                              name: product.name,
+                              price: product.price,
+                              image: product.image,
+                              type: 'premium'
+                            });
+                          }
+                        }}
+                        className="p-2 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full transition-all group/heart hover:scale-110 active:scale-95"
+                      >
+                        <Heart className={`w-5 h-5 transition-colors ${isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-white group-hover/heart:text-red-400'}`} />
+                      </button>
+                    </div>
+
                     {product.tag && (
                       <div className="absolute top-4 right-4 z-10">
                         <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm ${product.tag === 'Best Seller' ? 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/50' :
@@ -178,7 +202,6 @@ export default function Home() {
 
       <Features />
 
-      <FAQ />
       <MarqueeBar />
       <FAQSection />
       <DiscordStatus />

@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com', // เผื่อไว้สำหรับรูป Google (อนาคต)
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com', // สำหรับรูป Thumbnails จาก YouTube
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.downloadpirate.com', // สำหรับรูปจากเว็บภายนอก (Assets)
+      },
     ],
   },
   async headers() {

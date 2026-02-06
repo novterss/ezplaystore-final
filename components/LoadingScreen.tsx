@@ -10,7 +10,7 @@ const LoadingScreen = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 2000); // Increased slightly to let users see the cool loading screen
+        }, 2000); // 2 seconds loading
 
         return () => clearTimeout(timer);
     }, []);
@@ -22,38 +22,49 @@ const LoadingScreen = () => {
                     key="loading-screen"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="fixed inset-0 bg-[#050505] z-[200] flex flex-col items-center justify-center p-4"
+                    transition={{ duration: 0.8 }}
+                    className="fixed inset-0 bg-[#050505] z-[200] flex flex-col items-center justify-center p-4 overflow-hidden"
                 >
-                    {/* Pulsating Logo Image */}
+                    {/* Background Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-black to-black pointer-events-none" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
+
+                    {/* Logo Image */}
                     <motion.div
-                        animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="mb-8 relative w-56 h-56"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-8 relative w-64 h-64 md:w-80 md:h-80"
                     >
-                        <Image
-                            src="/images/loading2.png"
-                            alt="Loading"
-                            fill
-                            className="object-contain drop-shadow-[0_0_30px_rgba(168,85,247,0.6)]"
-                        />
+                        <motion.div
+                            animate={{
+                                y: [0, -10, 0],
+                                filter: ['drop-shadow(0 0 20px rgba(168,85,247,0.3))', 'drop-shadow(0 0 40px rgba(168,85,247,0.5))', 'drop-shadow(0 0 20px rgba(168,85,247,0.3))']
+                            }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            className="w-full h-full relative"
+                        >
+                            <Image
+                                src="/images/ezhome.png"
+                                alt="Loading"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </motion.div>
                     </motion.div>
 
-                    {/* Typing Text Effect */}
-                    <div className="font-mono text-purple-400 text-lg md:text-xl flex items-center gap-3">
-                        <span className="w-3 h-3 bg-purple-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-                        <TypewriterText key="loading-text" text="S tarting....." />
-                    </div>
+
 
                     {/* Progress Bar */}
                     <motion.div
-                        className="w-64 h-1.5 bg-gray-900 rounded-full mt-6 overflow-hidden border border-white/5"
+                        className="w-64 md:w-80 h-1 bg-white/5 rounded-full overflow-hidden"
                     >
                         <motion.div
                             initial={{ width: "0%" }}
                             animate={{ width: "100%" }}
-                            transition={{ duration: 2, ease: "easeInOut" }}
-                            className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]"
+                            transition={{ duration: 1.8, ease: "easeInOut" }}
+                            className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.8)]"
                         />
                     </motion.div>
                 </motion.div>
@@ -61,25 +72,5 @@ const LoadingScreen = () => {
         </AnimatePresence>
     );
 };
-
-// Simple Typewriter component
-const TypewriterText = ({ text }: { text: string }) => {
-    const [displayText, setDisplayText] = useState('');
-
-    useEffect(() => {
-        let i = 0;
-        const timer = setInterval(() => {
-            if (i < text.length) {
-                setDisplayText((prev) => prev + text.charAt(i));
-                i++;
-            } else {
-                clearInterval(timer);
-            }
-        }, 150); // Slower typing for "....." effect
-        return () => clearInterval(timer);
-    }, [text]);
-
-    return <span className="tracking-widest">{displayText}</span>;
-}
 
 export default LoadingScreen;

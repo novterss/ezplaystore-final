@@ -8,6 +8,8 @@ import ClickSpark from './ClickSpark';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { useLanguage } from '../contexts/LanguageContext';
+
 interface ProtectedDownloadProps {
   fileUrl: string;
   fileName: string;
@@ -16,6 +18,7 @@ interface ProtectedDownloadProps {
 const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
   const { data: session } = useSession();
   const router = useRouter();
+  const { t } = useLanguage();
   const [isChecking, setIsChecking] = useState(false);
 
   const handleJoinDiscord = () => {
@@ -111,7 +114,7 @@ const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
         className="mt-6 w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-green-500/40 active:scale-95 text-sm cursor-pointer"
       >
         <Download className="w-5 h-5" />
-        Download File
+        {t.tabbed.downloadFile}
       </button>
     </ClickSpark>
   );

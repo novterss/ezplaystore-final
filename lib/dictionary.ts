@@ -22,7 +22,18 @@ export const dictionary = {
             rights: "All rights reserved.",
             secure: "ชำระเงินปลอดภัย",
             delivery: "ส่งของทันที",
-            support: "ซัพพอร์ต 24/7"
+            support: "ซัพพอร์ต 24/7",
+            paymentMethods: "ช่องทางการชำระเงิน",
+            truemoney: "วอลเล็ท",
+            promptpay: "พร้อมเพย์",
+            creditcard: "บัตรเครดิต",
+            blogLink: "บล็อกและข่าวสาร",
+            contactLink: "ติดต่อเรา",
+            termsLink: "เงื่อนไขการให้บริการ",
+            privacyLink: "นโยบายความเป็นส่วนตัว",
+            emailSupport: "Email Support",
+            location: "ที่อยู่ร้าน",
+            bangkok: "กรุงเทพมหานคร, ประเทศไทย"
         },
         hero: {
             title: "คลังแสงเกมและโปรแกรมระดับเทพ",
@@ -83,6 +94,10 @@ export const dictionary = {
                 {
                     q: "เวลาทำการ (Support Hours)",
                     a: "เราให้บริการตลอด 24 ชม. ผ่านทาง Discord ตอบกลับภายใน 5 นาที"
+                },
+                {
+                    q: "login แล้ว เข้าเซิฟเวอร์แล้วทำไมถึงโหลดไม่ได้?",
+                    a: "ต้องกด logout และ login ใหม่เพื่ออัพเดทสถานะนะครับ"
                 }
             ]
         },
@@ -150,7 +165,16 @@ export const dictionary = {
             searchPlaceholder: "ค้นหาโปรแกรม... (เช่น After Effects, Twixtor)",
             noResults: "😭 ไม่พบรายการที่ค้นหา (No items found)",
             tryAgain: "ลองค้นหาด้วยคำอื่น หรือกดเปิด Ticket เพื่อขอไฟล์",
-            getLink: "รับลิ้งค์ใน Discord"
+            getLink: "รับลิ้งค์ใน Discord",
+            downloadFile: "ดาวน์โหลดเลย",
+            categories: {
+                adobe: "Adobe & มัลติมีเดีย",
+                windows: "Windows & Office",
+                plugins: "ปลั๊กอิน (.aex)",
+                extensions: "ส่วนเสริม (.zxp)",
+                scripts: "สคริปต์ (.jsx)",
+                assets: "แอสเซทและพรีเซ็ต"
+            }
         },
         service: {
             title: "ลงไม่เป็น? เรามีบริการรับลงโปรแกรม",
@@ -180,8 +204,6 @@ export const dictionary = {
         marquee: {
             items: [
                 "🚀 FiveM Spoofer: ปลอดภัย 100% (Undetected)",
-                "⚡ อัปเดตโปร Valorant ใหม่! แรงกว่าเดิม",
-                "🎁 แจกฟรี HWID Spoofer ตัวเทพ ใน Discord เท่านั้น",
                 "🔧 ปิดปรับปรุงระบบ: 03:00 - 04:00 น."
             ]
         },
@@ -212,11 +234,68 @@ export const dictionary = {
             title: "สถานะบริการ",
             subtitle: "ตรวจสอบสถานะการทำงานของโปรแกรม Premium ของเราแบบเรียลไทม์",
             lastUpdated: "อัปเดตล่าสุด",
+            date: "กุมภาพันธ์ 2025",
             undetected: "ปกติ (Undetected)",
             maintenance: "ปิดปรับปรุง",
             testing: "กำลังทดสอบ",
             detected: "ตรวจพบ (Detected)",
             clickToRefresh: "คลิกเพื่อรีเฟรช"
+        },
+        termsPage: {
+            title: "เงื่อนไขการให้บริการ",
+            sections: [
+                { title: "1. ข้อตกลงการใช้บริการ", content: "เมื่อคุณใช้บริการของ EzplaystoreTH ถือว่าคุณยอมรับเงื่อนไขดังกล่าว หากคุณไม่เห็นด้วยกับเงื่อนไขและข้อกำหนด ท่านอาจไม่สามารถเข้าถึงการให้บริการได้ทันที" },
+                { title: "2. การใช้งานผลิตภัณฑ์", content: "ผลิตภัณฑ์ที่จำหน่ายของ EzplaystoreTH มีไว้สำหรับใช้งานส่วนตัวเท่านั้น ห้ามนำไปจำหน่ายต่อ และห้าม ทำให้มีส่วนร่วมในกิจกรรมที่ผิดกฎหมาย" },
+                { title: "3. การชำระเงิน", content: "สกุลเงินหลักที่รับชำระคือบาทไทย Ticket จะ Closed ลากเกิน 1ชม. เราไม่รับผิดชอบต่อปลาตะเพียน/ตบนกหรือปัญหาที่เกิดจากความผิดพลาดของผู้ใช้งาน" },
+                { title: "4. การคืนเงิน", content: "เนื่องจากสินค้าเป็นดิจิทัล เราไม่รับคืนสินค้าจากการซื้อสินค้าในเว็บไซต์(แต่) หากสินค้าใช้งานไม่ได้ เราจะทำการออกของใหม่ให้/หาตัวที่ใช้ได้" },
+                { title: "5. ความรับผิดชอบ", content: "EzplaystoreTH ไม่รับผิดชอบต่อความเสียหายใดๆ ที่เกิดจากการใช้งานผลิตภัณฑ์ รวมไปถึงผล หรือสิ่งงานะมาพร้อมซอฟต์แวร์และการถอด นะ(เรียภา)" },
+                { title: "6. การเปลี่ยนแปลงข้อกำหนด", content: "ทางเราสงวนสิทธิ์ในการเปลี่ยนแปลงข้อกำหนดเหล่านี้ได้ตลอดเวลาโดยไม่ต้องแจ้งให้ทราบล่วงหน้า" }
+            ],
+            lastUpdated: "อัปเดตล่าสุด",
+            date: "กุมภาพันธ์ 2025"
+        },
+        privacyPage: {
+            title: "นโยบายความเป็นส่วนตัว",
+            sections: [
+                { title: "1. ข้อมูลที่เราเก็บรวบรวม", content: "เราเก็บรวบรวมข้อมูลที่คุณให้เมื่อใช้บริการของเรา รวมถึงอีเมล, Discord ID, และข้อมูลการทำธุรกรรม" },
+                { title: "2. วิธีใช้ข้อมูล", content: "เราใช้ข้อมูลเพื่อให้บริการและปรับปรุงประสบการณ์การใช้งาน รวมถึงการยืนยันตัวตนสมาชิก" },
+                { title: "3. การแชร์ข้อมูล", content: "เราไม่แชร์ข้อมูลส่วนบุคคลกับบุคคลที่สาม ยกเว้นตามที่กฎหมายกำหนด" },
+                { title: "4. ความปลอดภัยของข้อมูล", content: "เราใช้มาตรการความปลอดภัยมาตรฐานในการปกป้องข้อมูลของคุณ" },
+                { title: "5. สิทธิ์ของคุณ", content: "คุณมีสิทธิ์ขอดู แก้ไข หรือลบข้อมูลส่วนบุคคลของคุณได้ตลอดเวลา" }
+            ],
+            lastUpdated: "อัปเดตล่าสุด",
+            date: "กุมภาพันธ์ 2025"
+        },
+        contactPage: {
+            title: "ติดต่อเรา",
+            subtitle: "ติดต่อได้หลายช่องทาง",
+            formTitle: "ส่งข้อความถึงเรา",
+            name: "ชื่อของคุณ",
+            email: "อีเมล",
+            message: "ข้อความ",
+            send: "ส่งข้อความ",
+            sending: "กำลังส่ง...",
+            success: "ส่งข้อความสำเร็จ!",
+            discordTitle: "Discord",
+            discordDesc: "ติดต่อเราผ่าน Discord เพื่อการตอบกลับที่รวดเร็ว",
+            instagramTitle: "Instagram",
+            instagramDesc: "ติดตามเราบน Instagram",
+            emailTitle: "อีเมล",
+            emailDesc: "ส่งอีเมลถึงเราได้ที่"
+        },
+        blogPage: {
+            title: "บล็อกและข่าวสาร",
+            subtitle: "อัพเดทล่าสุด, บทความ, และข่าวสารจาก EzplaystoreTH",
+            featured: "แนะนำ",
+            readMore: "อ่านเพิ่มเติม",
+            noResults: "ไม่พบบทความในหมวดหมู่นี้",
+            categories: {
+                all: "ทั้งหมด",
+                updates: "อัพเดท",
+                tutorials: "วิธีใช้",
+                promotions: "โปรโมชั่น",
+                announcements: "ประกาศ"
+            }
         }
     },
     EN: {
@@ -242,7 +321,18 @@ export const dictionary = {
             rights: "All rights reserved.",
             secure: "Secure Payment",
             delivery: "Instant Delivery",
-            support: "24/7 Support"
+            support: "24/7 Support",
+            paymentMethods: "Payment Methods",
+            truemoney: "TrueMoney Wallet",
+            promptpay: "QR PromptPay",
+            creditcard: "Credit Card",
+            blogLink: "Blog & News",
+            contactLink: "Contact Us",
+            termsLink: "Terms of Service",
+            privacyLink: "Privacy Policy",
+            emailSupport: "Email Support",
+            location: "Location",
+            bangkok: "Bangkok, Thailand"
         },
         hero: {
             title: "Premium Game & Software Store",
@@ -294,6 +384,10 @@ export const dictionary = {
                 {
                     q: "Support Hours",
                     a: "We are available 24/7 on Discord. Our average response time is less than 5 minutes."
+                },
+                {
+                    q: "Logged in & Joined server but can't download?",
+                    a: "Please try logging out and logging in again to refresh your status."
                 }
             ]
         },
@@ -361,7 +455,16 @@ export const dictionary = {
             searchPlaceholder: "Search programs... (e.g. After Effects, Twixtor)",
             noResults: "😭 No items found",
             tryAgain: "Try searching specifically or open a ticket to request.",
-            getLink: "Get Link in Discord"
+            getLink: "Get Link in Discord",
+            downloadFile: "Download File",
+            categories: {
+                adobe: "Adobe & Multimedia",
+                windows: "Windows & Office",
+                plugins: "Plugins (.aex)",
+                extensions: "Extensions (.zxp)",
+                scripts: "Scripts (.jsx)",
+                assets: "Assets & Presets"
+            }
         },
         service: {
             title: "Can't install? We have installation service",
@@ -419,8 +522,6 @@ export const dictionary = {
         marquee: {
             items: [
                 "🚀 FiveM Spoofer: SAFE & UNDETECTED",
-                "⚡ New Valorant Cheat Updated!",
-                "🎁 Free HWID Spoofer available in Discord",
                 "🔧 Server Maintenance: 03:00 - 04:00 AM"
             ]
         },
@@ -451,11 +552,68 @@ export const dictionary = {
             title: "Service Status",
             subtitle: "Real-time, operational status of our Premium tools.",
             lastUpdated: "Last Updated",
+            date: "February 2025",
             undetected: "Undetected",
             maintenance: "Maintenance",
             testing: "Testing",
             detected: "Detected",
             clickToRefresh: "Click to refresh"
+        },
+        termsPage: {
+            title: "Terms of Service",
+            sections: [
+                { title: "1. Agreement to Terms", content: "By using EzplaystoreTH services, you agree to these terms. If you disagree with any terms, you may not access our services." },
+                { title: "2. Product Usage", content: "Products sold by EzplaystoreTH are for personal use only. Reselling is prohibited, and engaging in illegal activities is forbidden." },
+                { title: "3. Payment", content: "The primary currency is Thai Baht. Tickets will be closed after 1 hour of inactivity. We are not responsible for user errors during payment." },
+                { title: "4. Refunds", content: "As digital products, we do not offer refunds. However, if a product doesn't work, we will provide a replacement or remote assistance." },
+                { title: "5. Liability", content: "EzplaystoreTH is not responsible for any damages arising from product usage, including software-related consequences." },
+                { title: "6. Changes to Terms", content: "We reserve the right to modify these terms at any time without prior notice." }
+            ],
+            lastUpdated: "Last Updated",
+            date: "February 2025"
+        },
+        privacyPage: {
+            title: "Privacy Policy",
+            sections: [
+                { title: "1. Information We Collect", content: "We collect information you provide when using our services, including email, Discord ID, and transaction data." },
+                { title: "2. How We Use Information", content: "We use information to provide and improve our services, including member verification." },
+                { title: "3. Information Sharing", content: "We do not share personal information with third parties except as required by law." },
+                { title: "4. Data Security", content: "We use standard security measures to protect your data." },
+                { title: "5. Your Rights", content: "You have the right to view, edit, or delete your personal information at any time." }
+            ],
+            lastUpdated: "Last Updated",
+            date: "February 2025"
+        },
+        contactPage: {
+            title: "Contact Us",
+            subtitle: "Multiple ways to reach us",
+            formTitle: "Send us a message",
+            name: "Your Name",
+            email: "Email",
+            message: "Message",
+            send: "Send Message",
+            sending: "Sending...",
+            success: "Message sent successfully!",
+            discordTitle: "Discord",
+            discordDesc: "Contact us via Discord for fast response",
+            instagramTitle: "Instagram",
+            instagramDesc: "Follow us on Instagram",
+            emailTitle: "Email",
+            emailDesc: "Email us at"
+        },
+        blogPage: {
+            title: "Blog & News",
+            subtitle: "Latest updates, articles, and news from EzplaystoreTH",
+            featured: "Featured",
+            readMore: "Read More",
+            noResults: "No articles found in this category",
+            categories: {
+                all: "All",
+                updates: "Updates",
+                tutorials: "Tutorials",
+                promotions: "Promotions",
+                announcements: "Announcements"
+            }
         }
     },
     CN: {
@@ -481,7 +639,18 @@ export const dictionary = {
             rights: "版权所有",
             secure: "安全支付",
             delivery: "即时交付",
-            support: "24/7 支持"
+            support: "24/7 支持",
+            paymentMethods: "支付方式",
+            truemoney: "TrueMoney 钱包",
+            promptpay: "QR PromptPay",
+            creditcard: "信用卡",
+            blogLink: "博客与新闻",
+            contactLink: "联系我们",
+            termsLink: "服务条款",
+            privacyLink: "隐私政策",
+            emailSupport: "电子邮件支持",
+            location: "位置",
+            bangkok: "泰国曼谷"
         },
         hero: {
             title: "高级游戏和软件商店",
@@ -533,6 +702,10 @@ export const dictionary = {
                 {
                     q: "支持时间 (Support Hours)",
                     a: "我们在 Discord 上提供 24/7 全天候服务。平均响应时间不到 5 分钟。"
+                },
+                {
+                    q: "登录并加入服务器后无法下载？",
+                    a: "请尝试注销并重新登录以刷新您的状态。"
                 }
             ]
         },
@@ -600,7 +773,16 @@ export const dictionary = {
             searchPlaceholder: "搜索程序... (例如 After Effects, Twixtor)",
             noResults: "😭 未找到项目",
             tryAgain: "尝试其他关键词或开启工单请求。",
-            getLink: "在 Discord 获取链接"
+            getLink: "在 Discord 获取链接",
+            downloadFile: "立即下载",
+            categories: {
+                adobe: "Adobe 与 多媒体",
+                windows: "Windows & Office",
+                plugins: "插件 (.aex)",
+                extensions: "扩展 (.zxp)",
+                scripts: "脚本 (.jsx)",
+                assets: "素材与预设"
+            }
         },
         service: {
             title: "不会安装？我们提供安装服务",
@@ -658,8 +840,6 @@ export const dictionary = {
         marquee: {
             items: [
                 "🚀 FiveM Spoofer: 安全 & 未检测",
-                "⚡ Valorant 辅助已更新!",
-                "🎁 Discord 免费领取 HWID Spoofer",
                 "🔧 服务器维护: 03:00 - 04:00 AM"
             ]
         },
@@ -690,11 +870,68 @@ export const dictionary = {
             title: "服务状态",
             subtitle: "我们高级工具的实时运行状态。",
             lastUpdated: "最后更新",
+            date: "2025年2月",
             undetected: "未检测到 (Undetected)",
             maintenance: "维护中",
             testing: "测试中",
             detected: "已检测到 (Detected)",
             clickToRefresh: "点击刷新"
+        },
+        termsPage: {
+            title: "服务条款",
+            sections: [
+                { title: "1. 条款同意", content: "使用 EzplaystoreTH 服务即表示您同意这些条款。如果您不同意任何条款，您可能无法访问我们的服务。" },
+                { title: "2. 产品使用", content: "EzplaystoreTH 销售的产品仅供个人使用。禁止转售，严禁参与非法活动。" },
+                { title: "3. 付款", content: "主要货币为泰铢。工单将在 1 小时不活动后关闭。我们对付款过程中的用户错误不负责。" },
+                { title: "4. 退款", content: "作为数字产品，我们不提供退款。但是，如果产品无法使用，我们将提供替换或远程协助。" },
+                { title: "5. 责任", content: "EzplaystoreTH 对因产品使用而产生的任何损害不承担责任，包括软件相关后果。" },
+                { title: "6. 条款变更", content: "我们保留随时修改这些条款的权利，恕不另行通知。" }
+            ],
+            lastUpdated: "最后更新",
+            date: "2025年2月"
+        },
+        privacyPage: {
+            title: "隐私政策",
+            sections: [
+                { title: "1. 我们收集的信息", content: "我们收集您在使用我们服务时提供的信息，包括电子邮件、Discord ID 和交易数据。" },
+                { title: "2. 我们如何使用信息", content: "我们使用信息来提供和改进我们的服务，包括会员验证。" },
+                { title: "3. 信息共享", content: "除法律要求外，我们不会与第三方分享个人信息。" },
+                { title: "4. 数据安全", content: "我们使用标准安全措施来保护您的数据。" },
+                { title: "5. 您的权利", content: "您有权随时查看、编辑或删除您的个人信息。" }
+            ],
+            lastUpdated: "最后更新",
+            date: "2025年2月"
+        },
+        contactPage: {
+            title: "联系我们",
+            subtitle: "多种联系方式",
+            formTitle: "给我们留言",
+            name: "您的姓名",
+            email: "电子邮件",
+            message: "消息",
+            send: "发送消息",
+            sending: "发送中...",
+            success: "消息发送成功！",
+            discordTitle: "Discord",
+            discordDesc: "通过 Discord 联系我们以获得快速响应",
+            instagramTitle: "Instagram",
+            instagramDesc: "在 Instagram 上关注我们",
+            emailTitle: "电子邮件",
+            emailDesc: "发送邮件至"
+        },
+        blogPage: {
+            title: "博客与新闻",
+            subtitle: "来自 EzplaystoreTH 的最新更新、文章和新闻",
+            featured: "推荐",
+            readMore: "阅读更多",
+            noResults: "此类别中没有文章",
+            categories: {
+                all: "全部",
+                updates: "更新",
+                tutorials: "教程",
+                promotions: "促销",
+                announcements: "公告"
+            }
         }
     },
     JP: {
@@ -720,7 +957,18 @@ export const dictionary = {
             rights: "無断転載禁止",
             secure: "安全な支払い",
             delivery: "即時配達",
-            support: "24/7 サポート"
+            support: "24/7 サポート",
+            paymentMethods: "支払い方法",
+            truemoney: "TrueMoney ウォレット",
+            promptpay: "QR PromptPay",
+            creditcard: "クレジットカード",
+            blogLink: "ブログ＆ニュース",
+            contactLink: "お問い合わせ",
+            termsLink: "利用規約",
+            privacyLink: "プライバシーポリシー",
+            emailSupport: "メールサポート",
+            location: "所在地",
+            bangkok: "バンコク、タイ"
         },
         hero: {
             title: "プレミアムゲーム＆ソフトウェアストア",
@@ -772,6 +1020,10 @@ export const dictionary = {
                 {
                     q: "サポート時間 (Support Hours)",
                     a: "Discordで24時間年中無休で対応しています。平均応答時間は5分未満です。"
+                },
+                {
+                    q: "サーバーに参加してもダウンロードできない？",
+                    a: "ステータスを更新するために、一度ログアウトして再ログインしてください。"
                 }
             ]
         },
@@ -839,7 +1091,16 @@ export const dictionary = {
             searchPlaceholder: "プログラムを検索... (例: After Effects, Twixtor)",
             noResults: "😭 アイテムが見つかりません",
             tryAgain: "別のキーワードで検索するか、チケットを開いてリクエストしてください。",
-            getLink: "Discordでリンクを取得"
+            getLink: "Discordでリンクを取得",
+            downloadFile: "ファイルをダウンロード",
+            categories: {
+                adobe: "Adobe & マルチメディア",
+                windows: "Windows & Office",
+                plugins: "プラグイン (.aex)",
+                extensions: "拡張機能 (.zxp)",
+                scripts: "スクリプト (.jsx)",
+                assets: "アセット & プリセット"
+            }
         },
         service: {
             title: "インストールできませんか？インストール代行サービスがあります",
@@ -897,8 +1158,6 @@ export const dictionary = {
         marquee: {
             items: [
                 "🚀 FiveM Spoofer: 安全 & 検知なし",
-                "⚡ Valorant チート更新完了!",
-                "🎁 Discordで無料HWID Spoofer配布中",
                 "🔧 サーバーメンテナンス: 03:00 - 04:00 AM"
             ]
         },
@@ -929,11 +1188,68 @@ export const dictionary = {
             title: "サービスステータス",
             subtitle: "プレミアムツールのリアルタイム稼働状況。",
             lastUpdated: "最終更新",
+            date: "2025年2月",
             undetected: "未検出 (Undetected)",
             maintenance: "メンテナンス",
             testing: "テスト中",
             detected: "検出済み (Detected)",
             clickToRefresh: "クリックして更新"
+        },
+        termsPage: {
+            title: "利用規約",
+            sections: [
+                { title: "1. 規約への同意", content: "EzplaystoreTH のサービスを使用することにより、これらの規約に同意したことになります。規約に同意しない場合は、サービスにアクセスできない場合があります。" },
+                { title: "2. 製品の使用", content: "EzplaystoreTH が販売する製品は個人使用のみを目的としています。転売は禁止されており、違法な活動への参加は禁じられています。" },
+                { title: "3. 支払い", content: "主な通貨はタイバーツです。チケットは 1 時間操作がないと閉じられます。支払い中のユーザーエラーについては責任を負いません。" },
+                { title: "4. 返金", content: "デジタル製品のため、返金は行っておりません。ただし、製品が機能しない場合は、代替品またはリモートアシスタンスを提供いたします。" },
+                { title: "5. 責任", content: "EzplaystoreTH は、ソフトウェア関連の結果を含む、製品使用から生じるいかなる損害についても責任を負いません。" },
+                { title: "6. 規約の変更", content: "当社は、事前の通知なしにいつでもこれらの規約を変更する権利を留保します。" }
+            ],
+            lastUpdated: "最終更新",
+            date: "2025年2月"
+        },
+        privacyPage: {
+            title: "プライバシーポリシー",
+            sections: [
+                { title: "1. 収集する情報", content: "当社は、サービス利用時に提供される情報（メール、Discord ID、取引データなど）を収集します。" },
+                { title: "2. 情報の使用方法", content: "情報は、サービスの提供と改善、メンバー確認などに使用されます。" },
+                { title: "3. 情報の共有", content: "法律で義務付けられている場合を除き、個人情報を第三者と共有することはありません。" },
+                { title: "4. データセキュリティ", content: "お客様のデータを保護するために標準的なセキュリティ対策を使用しています。" },
+                { title: "5. お客様の権利", content: "いつでも個人情報を閲覧、編集、または削除する権利があります。" }
+            ],
+            lastUpdated: "最終更新",
+            date: "2025年2月"
+        },
+        contactPage: {
+            title: "お問い合わせ",
+            subtitle: "複数の連絡方法",
+            formTitle: "メッセージを送信",
+            name: "お名前",
+            email: "メールアドレス",
+            message: "メッセージ",
+            send: "送信",
+            sending: "送信中...",
+            success: "メッセージを送信しました！",
+            discordTitle: "Discord",
+            discordDesc: "Discord で連絡して迅速な対応を受けましょう",
+            instagramTitle: "Instagram",
+            instagramDesc: "Instagram でフォローしてください",
+            emailTitle: "メール",
+            emailDesc: "メールでのお問い合わせ"
+        },
+        blogPage: {
+            title: "ブログ＆ニュース",
+            subtitle: "EzplaystoreTH からの最新アップデート、記事、ニュース",
+            featured: "おすすめ",
+            readMore: "続きを読む",
+            noResults: "このカテゴリには記事がありません",
+            categories: {
+                all: "すべて",
+                updates: "アップデート",
+                tutorials: "チュートリアル",
+                promotions: "プロモーション",
+                announcements: "お知らせ"
+            }
         }
     }
 };

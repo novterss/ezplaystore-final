@@ -66,7 +66,7 @@ const Footer = () => {
 
                         <div className="flex gap-4 pt-2">
                             <SocialLink href="https://discord.gg/YMZXUhuMcV" icon={<Image src="/images/discord.jpg" alt="Discord" width={20} height={20} className="rounded-full" />} color="bg-[#5865F2]" />
-                            <SocialLink href="https://facebook.com/EzplaystoreTh" icon={<Facebook className="w-5 h-5" />} color="bg-[#1877F2]" />
+                            <SocialLink href="https://www.facebook.com/profile.php?id=61578707159949" icon={<Facebook className="w-5 h-5" />} color="bg-[#1877F2]" />
                             <SocialLink href="https://youtube.com/@novterss" icon={<Youtube className="w-5 h-5" />} color="bg-[#FF0000]" />
                         </div>
                     </div>
@@ -80,8 +80,10 @@ const Footer = () => {
                         <ul className="space-y-3 text-sm text-gray-400">
                             <li><Link href="/" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.navbar.home}</Link></li>
                             <li><Link href="#shop" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.navbar.shop}</Link></li>
-                            <li><Link href="#free-zone" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.navbar.freeZone}</Link></li>
-                            <li><Link href="/profile" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.navbar.login}</Link></li>
+                            <li><Link href="/blog" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.footer.blogLink}</Link></li>
+                            <li><Link href="/contact" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.footer.contactLink}</Link></li>
+                            <li><Link href="/terms" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.footer.termsLink}</Link></li>
+                            <li><Link href="/privacy" className="hover:text-primary transition-colors flex items-center gap-2"><div className="w-1 h-1 bg-gray-600 rounded-full" /> {t.footer.privacyLink}</Link></li>
                         </ul>
                     </div>
 
@@ -114,10 +116,10 @@ const Footer = () => {
 
                         <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                             <span className="w-1 h-6 bg-green-500 rounded-full"></span>
-                            Payment Methods
+                            {t.footer.paymentMethods}
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                            <div className="bg-white/5 border border-white/10 p-2 rounded-lg flex items-center justify-center w-12 h-12" title="TrueMoney Wallet">
+                            <div className="bg-white/5 border border-white/10 p-2 rounded-lg flex items-center justify-center w-12 h-12" title={t.footer.truemoney}>
                                 <div className="relative w-full h-full">
                                     <Image
                                         src="/images/truemoney.jpg"
@@ -127,11 +129,21 @@ const Footer = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="bg-white/5 border border-white/10 p-2 rounded-lg flex items-center justify-center w-12 h-12" title="PromptPay">
+                            <div className="bg-white/5 border border-white/10 p-2 rounded-lg flex items-center justify-center w-12 h-12" title={t.footer.promptpay}>
                                 <div className="relative w-full h-full">
                                     <Image
                                         src="/images/promptpay.png"
                                         alt="PromptPay"
+                                        fill
+                                        className="object-contain rounded"
+                                    />
+                                </div>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 p-2 rounded-lg flex items-center justify-center w-12 h-12" title={t.footer.creditcard}>
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src="/images/creditcard.png"
+                                        alt="Credit Card"
                                         fill
                                         className="object-contain rounded"
                                     />
@@ -152,7 +164,7 @@ const Footer = () => {
                                     <Mail className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <span className="block text-white font-medium">Email Support</span>
+                                    <span className="block text-white font-medium">{t.footer.emailSupport}</span>
                                     <span className="text-xs break-all">meliodazzzzeiei@gmail.com</span>
                                 </div>
                             </li>
@@ -161,8 +173,8 @@ const Footer = () => {
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <span className="block text-white font-medium">Location</span>
-                                    <span className="text-xs">Bangkok, Thailand</span>
+                                    <span className="block text-white font-medium">{t.footer.location}</span>
+                                    <span className="text-xs">{t.footer.bangkok}</span>
                                 </div>
                             </li>
                         </ul>

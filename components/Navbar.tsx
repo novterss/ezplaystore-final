@@ -9,6 +9,10 @@ import { useState } from 'react';
 import { Menu, X, Globe, ChevronDown, Activity } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import SearchBar from './SearchBar';
+import WishlistButton from './WishlistButton';
+import { premiumProducts } from '@/data/products';
+import { freeCategories } from '@/data/freeZoneData';
 
 const Navbar = () => {
     const { data: session } = useSession(); // ดึงข้อมูลผู้ใช้
@@ -51,7 +55,7 @@ const Navbar = () => {
 
                 {/* Logo */}
                 {/* Logo (Centered) */}
-                <Link href="/" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-3 group">
+                <Link href="/" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-3 group z-10">
                     <div className="relative w-[50px] h-[50px] overflow-hidden rounded-full border-2 border-primary/50 shadow-[0_0_15px_rgba(34,197,94,0.3)] group-hover:scale-110 transition-transform duration-300 animate-pulse-slow">
                         <Image src="/images/ezicon.png" alt="Logo" fill className="object-cover" />
                     </div>
@@ -65,7 +69,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Left Menu Links */}
-                <div className="hidden md:flex items-center gap-2 bg-white/5 rounded-full px-2 py-1.5 border border-white/5 backdrop-blur-md">
+                <div className="hidden md:flex items-center gap-2 bg-white/5 rounded-full px-2 py-1.5 border border-white/5 backdrop-blur-md mr-32">
                     {leftMenuItems.map((link, i) => {
                         const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href) && link.href !== '/';
                         return (
@@ -85,7 +89,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4"> {/* Reduced gap since we have right menu links now */}
 
                     {/* Right Menu Links */}
-                    <div className="hidden md:flex items-center gap-2 bg-white/5 rounded-full px-2 py-1.5 border border-white/5 backdrop-blur-md mr-2">
+                    <div className="hidden md:flex items-center gap-2 bg-white/5 rounded-full px-2 py-1.5 border border-white/5 backdrop-blur-md mr-2 ml-32">
                         {rightMenuItems.map((link, i) => {
                             const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href) && link.href !== '/';
                             return (
@@ -99,6 +103,17 @@ const Navbar = () => {
                                 </Link>
                             );
                         })}
+                    </div>
+
+                    {/* Search & Wishlist */}
+                    <div className="hidden md:flex items-center gap-2">
+                        <SearchBar products={[
+                            ...premiumProducts.map((p: { id: number; name: string; price: number }) => ({ id: p.id, name: p.name, type: 'premium' as const, price: p.price })),
+                            ...freeCategories.flatMap((cat: { items: { name: string }[] }, catIndex: number) =>
+                                cat.items.map((p: { name: string }, i: number) => ({ id: catIndex * 100 + i, name: p.name, type: 'free' as const }))
+                            )
+                        ]} />
+                        <WishlistButton />
                     </div>
 
                     {/* Language Switcher */}
@@ -167,13 +182,16 @@ const Navbar = () => {
                         </button>
                     )}
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden ml-2 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
-                    >
-                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                    </button>
+                    {/* Mobile Actions */}
+                    <div className="md:hidden flex items-center gap-2">
+                        <WishlistButton />
+                        <button
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
+                        >
+                            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import TiltCard from './TiltCard';
@@ -10,10 +10,119 @@ import { freeCategories } from '../data/freeZoneData';
 import ProtectedDownload from './ProtectedDownload';
 import { useLanguage } from '../contexts/LanguageContext';
 
+// Helper to extract YouTube ID
+const getYouTubeId = (url: string) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+};
+
+// Lite Video Player Component (Click-to-Load)
+const LiteVideoPlayer = ({ src, poster, title }: { src: string; poster?: string; title?: string }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(false);
+    const youtubeId = getYouTubeId(src);
+
+    const handleLoad = () => {
+        setIsLoaded(true);
+    };
+
+    const toggleMute = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsMuted(!isMuted);
+    };
+
+    // YouTube Thumbnail Fallback
+    const thumbnail = youtubeId
+        ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+        : poster;
+
+    if (!isLoaded) {
+        return (
+            <div
+                className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/50 border border-white/10 group-hover:border-purple-500/50 transition-all mb-4 cursor-pointer group/player"
+                onClick={handleLoad}
+            >
+                {thumbnail && (
+                    <Image
+                        src={thumbnail}
+                        alt={title || "Video Preview"}
+                        fill
+                        className="object-cover opacity-80 group-hover/player:opacity-100 transition-opacity"
+                    />
+                )}
+
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg transform group-hover/player:scale-110 transition-transform">
+                        <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 rounded text-xs text-white font-medium">
+                    Click to Play
+                </div>
+            </div>
+        );
+    }
+
+    // Loaded State
+    if (youtubeId) {
+        return (
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-white/10 mb-4">
+                <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0`}
+                    title={title || "YouTube video player"}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                />
+            </div>
+        );
+    }
+
+    return (
+        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-white/10 mb-4">
+            <video
+                ref={videoRef}
+                src={src}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted={isMuted}
+                loop
+                playsInline
+                controls
+            />
+        </div>
+    );
+};
+
+// Interface for type safety
+interface FreeItem {
+    name: string;
+    url: string;
+    description?: string;
+    tag?: string;
+    image?: string;
+    videoPreview?: string;
+    originalPreviewUrl?: string;
+    previewLink?: string;
+    plugins?: string[];
+    dateAdded?: string;
+    isHot?: boolean;
+}
+
 const TabbedFreeZone = () => {
     const [activeTab, setActiveTab] = useState(freeCategories[0].id);
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedPlugin, setSelectedPlugin] = useState('All');
     const { t } = useLanguage();
+
+    // Auto-switch to assets tab for dev/testing or stick effectively
+    // useEffect(() => { setActiveTab('assets'); }, []); 
 
     const getCategoryIcon = (categoryId: string) => {
         switch (categoryId) {
@@ -27,9 +136,27 @@ const TabbedFreeZone = () => {
                 return <Monitor className="w-12 h-12 text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]" />;
             case 'adobe':
                 return <PenTool className="w-12 h-12 text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.5)]" />;
+            case 'assets':
+                return <div className="text-4xl animate-pulse">🎨</div>;
             default:
                 return <Puzzle className="w-12 h-12 text-gray-400" />;
         }
+    };
+
+    // Helper to extract unique plugins from the 'assets' category
+    const getUniquePlugins = (items: FreeItem[]) => {
+        const allPlugins = items.flatMap(item => item.plugins || []);
+        return ['All', ...Array.from(new Set(allPlugins))];
+    };
+
+    // Helper to check if item is NEW (within 7 days)
+    const isNewItem = (dateString?: string) => {
+        if (!dateString) return false;
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now.getTime() - date.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays <= 7;
     };
 
     return (
@@ -81,7 +208,10 @@ const TabbedFreeZone = () => {
                 {freeCategories.map((cat) => (
                     <button
                         key={cat.id}
-                        onClick={() => setActiveTab(cat.id)}
+                        onClick={() => {
+                            setActiveTab(cat.id);
+                            setSelectedPlugin('All'); // Reset filter on tab change
+                        }}
                         className={`px-6 py-2.5 rounded-xl font-bold transition-all relative overflow-hidden text-sm uppercase tracking-wide ${activeTab === cat.id
                             ? 'text-white shadow-[0_0_20px_rgba(34,197,94,0.4)] scale-105'
                             : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5'
@@ -94,10 +224,35 @@ const TabbedFreeZone = () => {
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}
-                        {cat.name}
+                        {(t.tabbed.categories as any)[cat.id] || cat.name}
                     </button>
                 ))}
             </div>
+
+            {/* Dynamic Plugin Filters (Only for Assets Tab) */}
+            {activeTab === 'assets' && (
+                <div className="max-w-4xl mx-auto mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-2 p-4 bg-black/20 rounded-2xl border border-white/5 backdrop-blur-sm">
+                        <div className="flex items-center gap-2 mr-4 text-purple-400 font-bold uppercase tracking-wider text-xs">
+                            <Zap className="w-4 h-4" /> Filter By:
+                        </div>
+                        {getUniquePlugins(freeCategories.find(c => c.id === 'assets')?.items as FreeItem[] || []).map((plugin) => (
+                            <button
+                                key={plugin}
+                                onClick={() => setSelectedPlugin(plugin)}
+                                className={`
+                                    px-3 py-1.5 rounded-lg text-xs font-bold transition-all border
+                                    ${selectedPlugin === plugin
+                                        ? 'bg-purple-600 text-white border-purple-500 shadow-[0_0_15px_rgba(147,51,234,0.5)]'
+                                        : 'bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/10'}
+                                `}
+                            >
+                                {plugin}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             {/* Service Banner */}
             <div className="max-w-4xl mx-auto mb-16 relative group cursor-pointer">
@@ -126,14 +281,21 @@ const TabbedFreeZone = () => {
             </div>
 
             {/* Content Area */}
-            <div className="max-w-6xl mx-auto min-h-[400px]">
+            <div className="max-w-7xl mx-auto min-h-[400px]">
                 <AnimatePresence mode="wait">
                     {freeCategories.map((cat) => {
                         if (cat.id !== activeTab) return null;
 
-                        const filteredItems = cat.items.filter(item =>
+                        let filteredItems = cat.items.filter(item =>
                             item.name.toLowerCase().includes(searchQuery.toLowerCase())
                         );
+
+                        // Apply Plugin Filter
+                        if (activeTab === 'assets' && selectedPlugin !== 'All') {
+                            filteredItems = filteredItems.filter(item =>
+                                (item as FreeItem).plugins?.includes(selectedPlugin)
+                            );
+                        }
 
                         return (
                             <motion.div
@@ -162,7 +324,7 @@ const TabbedFreeZone = () => {
                                     )}
 
                                     <div className="absolute bottom-8 left-8 z-20">
-                                        <h3 className="text-4xl font-black text-white mb-2 tracking-tighter drop-shadow-lg">{cat.name}</h3>
+                                        <h3 className="text-4xl font-black text-white mb-2 tracking-tighter drop-shadow-lg">{(t.tabbed.categories as any)[cat.id] || cat.name}</h3>
                                         <div className="flex items-center gap-2">
                                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                             <p className="text-green-400 font-mono text-xs uppercase tracking-[0.2em]">Available Now</p>
@@ -172,49 +334,146 @@ const TabbedFreeZone = () => {
 
                                 {/* Items Grid */}
                                 {filteredItems.length > 0 ? (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        {filteredItems.map((item, idx) => (
+                                    <div className={`${activeTab === 'assets' ? 'grid grid-cols-1 gap-8 max-w-3xl mx-auto' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'}`}>
+                                        {filteredItems.map((item: FreeItem, idx) => (
                                             <TiltCard key={idx} className="h-full">
                                                 <motion.div
                                                     layout
                                                     initial={{ opacity: 0, scale: 0.9 }}
                                                     animate={{ opacity: 1, scale: 1 }}
                                                     transition={{ duration: 0.2, delay: idx * 0.05 }}
-                                                    className="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 hover:border-green-500/30 transition-all group backdrop-blur-sm flex flex-col justify-between h-full hover:shadow-xl"
+                                                    className={`
+                                                        bg-white/5 border border-white/10 rounded-3xl 
+                                                        hover:bg-white/10 transition-all group backdrop-blur-sm 
+                                                        flex flex-col justify-between h-full hover:shadow-2xl overflow-hidden relative
+                                                        ${activeTab === 'assets' ? 'p-0 hover:border-purple-500/50 hover:shadow-purple-500/20' : 'p-5 hover:border-green-500/30'}
+                                                    `}
                                                 >
-                                                    <div>
-                                                        <div className="flex items-start gap-4 mb-4">
-                                                            {((item as any).image || (cat as any)?.itemFallbackImage) && (
-                                                                <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-black/20 shrink-0 border border-white/10 group-hover:border-green-500/50 transition-colors">
-                                                                    <Image
-                                                                        src={(item as any).image || (cat as any)?.itemFallbackImage}
-                                                                        alt={item.name}
-                                                                        fill
-                                                                        className="object-cover group-hover:scale-110 transition-transform"
-                                                                    />
-                                                                </div>
-                                                            )}
-                                                            <div className="flex-1 min-w-0">
-                                                                <div className="flex justify-between items-start">
-                                                                    <h4 className="text-base font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
+                                                    {/* NEW & HOT BADGES */}
+                                                    <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+                                                        {item.isHot && (
+                                                            <div className="bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg shadow-red-500/40 animate-pulse flex items-center gap-1">
+                                                                🔥 HOT
+                                                            </div>
+                                                        )}
+                                                        {isNewItem(item.dateAdded) && (
+                                                            <div className="bg-blue-500 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg shadow-blue-500/40 flex items-center gap-1 border border-blue-400">
+                                                                ✨ NEW
+                                                            </div>
+                                                        )}
+                                                    </div>
+
+                                                    <div className={`${activeTab === 'assets' ? 'p-0' : ''}`}>
+                                                        {/* Video Preview or Image for Assets */}
+                                                        {item.videoPreview ? (
+                                                            <div className={activeTab === 'assets' ? 'mb-0' : ''}>
+                                                                <LiteVideoPlayer
+                                                                    src={item.videoPreview}
+                                                                    poster={item.image || (cat as any).itemFallbackImage}
+                                                                    title={item.name}
+                                                                />
+                                                            </div>
+                                                        ) : (
+                                                            <div className={`${activeTab === 'assets' ? 'p-6 pb-0' : 'flex items-start gap-4 mb-4'}`}>
+                                                                {(item.image || (cat as any)?.itemFallbackImage) && activeTab !== 'assets' && (
+                                                                    <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-black/20 shrink-0 border border-white/10 group-hover:border-green-500/50 transition-colors">
+                                                                        <Image
+                                                                            src={item.image || (cat as any)?.itemFallbackImage}
+                                                                            alt={item.name}
+                                                                            fill
+                                                                            className="object-cover group-hover:scale-110 transition-transform"
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                                {/* Asset Image Fallback if no video but is asset tab */}
+                                                                {activeTab === 'assets' && item.image && !item.videoPreview && (
+                                                                    <div className="relative w-full aspect-video overflow-hidden bg-black/20 mb-4 border-b border-white/10 group-hover:border-purple-500/50 transition-all">
+                                                                        <Image
+                                                                            src={item.image}
+                                                                            alt={item.name}
+                                                                            fill
+                                                                            className="object-cover transition-transform group-hover:scale-105"
+                                                                        />
+                                                                    </div>
+                                                                )}
+
+                                                                {/* Content Container (Title/Desc usually) */}
+                                                                {activeTab !== 'assets' && (
+                                                                    <div className="flex-1 min-w-0">
+                                                                        <div className="flex justify-between items-start">
+                                                                            <h4 className="text-base font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
+                                                                                {item.name}
+                                                                            </h4>
+                                                                            {item.tag && (
+                                                                                <span className="ml-2 bg-red-500/20 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider border border-red-500/30 shrink-0">
+                                                                                    {item.tag}
+                                                                                </span>
+                                                                            )}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        )}
+
+                                                        {/* Specific Layout for Assets Tab */}
+                                                        {activeTab === 'assets' ? (
+                                                            <div className="p-6">
+                                                                <div className="flex items-start justify-between mb-2">
+                                                                    <h4 className="text-2xl font-black text-white group-hover:text-purple-400 transition-colors">
                                                                         {item.name}
                                                                     </h4>
                                                                     {item.tag && (
-                                                                        <span className="ml-2 bg-red-500/20 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider border border-red-500/30 shrink-0">
+                                                                        <span className="ml-2 bg-purple-500/20 text-purple-400 text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider border border-purple-500/30 shrink-0">
                                                                             {item.tag}
                                                                         </span>
                                                                     )}
                                                                 </div>
+
+                                                                {item.description && (
+                                                                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                                                                        {item.description}
+                                                                    </p>
+                                                                )}
+
+                                                                {item.plugins && (
+                                                                    <div className="flex flex-wrap gap-2 mb-6">
+                                                                        {item.plugins.map((plugin, pIdx) => (
+                                                                            <span key={pIdx} className="flex items-center gap-1 text-[11px] bg-white/5 text-gray-300 px-2 py-1 rounded border border-white/10">
+                                                                                <Zap className="w-3 h-3 text-purple-400" />
+                                                                                {plugin}
+                                                                            </span>
+                                                                        ))}
+                                                                    </div>
+                                                                )}
+
+                                                                <div className="flex gap-3">
+                                                                    <ProtectedDownload
+                                                                        fileUrl={item.url}
+                                                                        fileName={item.name}
+                                                                    />
+                                                                    {item.originalPreviewUrl && (
+                                                                        <a
+                                                                            href={item.originalPreviewUrl}
+                                                                            target="_blank"
+                                                                            rel="noreferrer"
+                                                                            className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white text-sm font-medium border border-white/10 transition-colors flex items-center gap-2"
+                                                                        >
+                                                                            <span>📺</span> Watch
+                                                                        </a>
+                                                                    )}
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        ) : null}
                                                     </div>
 
-                                                    <div className="mt-4 pt-4 border-t border-white/5">
-                                                        <ProtectedDownload
-                                                            fileUrl={item.url}
-                                                            fileName={item.name}
-                                                        />
-                                                    </div>
+                                                    {activeTab !== 'assets' && (
+                                                        <div className="mt-4 pt-4 border-t border-white/5">
+                                                            <ProtectedDownload
+                                                                fileUrl={item.url}
+                                                                fileName={item.name}
+                                                            />
+                                                        </div>
+                                                    )}
                                                 </motion.div>
                                             </TiltCard>
                                         ))}
