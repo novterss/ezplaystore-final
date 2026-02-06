@@ -49,7 +49,7 @@ export const dictionary = {
             title: "ตัวอย่างการใช้งาน (Showcase)",
             subtitle: "ดูคลิปตัวอย่างการใช้งานจริง ก่อนตัดสินใจซื้อ"
         },
-        announcement: {
+        announcementModal: {
             title: "ประกาศสำคัญ",
             desc: "โปรโมชั่นพิเศษ! ลดราคาทั้งร้าน 50% เฉพาะวันนี้เท่านั้น รีบด่วนก่อนของหมด",
             close: "ปิดหน้าต่าง"
@@ -269,7 +269,7 @@ export const dictionary = {
             title: "Product Showcase",
             subtitle: "Watch real usage demos before you buy."
         },
-        announcement: {
+        announcementModal: {
             title: "Important Announcement",
             desc: "Special Promotion! 50% off storewide today only. Hurry before it's gone!",
             close: "Close"
@@ -508,8 +508,8 @@ export const dictionary = {
             title: "产品展示",
             subtitle: "购买前请观看实际使用演示。"
         },
-        announcement: {
-            title: "重要公告",
+        announcementModal: {
+            title: " 重要公告",
             desc: "特别促销！全场五折，仅限今日。欲购从速！",
             close: "关闭"
         },
@@ -747,7 +747,7 @@ export const dictionary = {
             title: "製品ショーケース",
             subtitle: "購入前に実際の使用デモをご覧ください。",
         },
-        announcement: {
+        announcementModal: {
             title: "重要なお知らせ",
             desc: "特別プロモーション！本日限定で全商品50%OFF。お早めにお買い求めください！",
             close: "閉じる"

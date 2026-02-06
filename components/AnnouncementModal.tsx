@@ -9,6 +9,18 @@ export default function AnnouncementModal() {
     const [isOpen, setIsOpen] = useState(false);
     const { t } = useLanguage();
 
+    // Safe access to the new key
+    const modalData = t.announcementModal || {
+        title: "Special Announcement",
+        desc: "Welcome to EzplaystoreTh!",
+        close: "Close"
+    };
+
+    const title = typeof modalData.title === 'string' ? modalData.title : "Special Announcement";
+    const desc = typeof modalData.desc === 'string' ? modalData.desc : "Welcome to EzplaystoreTh!";
+    const close = typeof modalData.close === 'string' ? modalData.close : "Close";
+    const shopNow = (t.hero && typeof t.hero.shopNow === 'string') ? t.hero.shopNow : "Shop Now";
+
     useEffect(() => {
         // Check if already seen
         const hasSeen = localStorage.getItem('hasSeenAnnouncement');
@@ -66,10 +78,10 @@ export default function AnnouncementModal() {
 
                             {/* Text */}
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                                {t.announcement?.title || "Special Announcement"}
+                                {title}
                             </h2>
                             <p className="text-gray-300 leading-relaxed mb-8">
-                                {t.announcement?.desc || "Welcome to EzplaystoreTh! Check out our latest software updates and flash sales."}
+                                {desc}
                             </p>
 
                             {/* Action Button */}
@@ -81,14 +93,14 @@ export default function AnnouncementModal() {
                                 className="w-full bg-primary hover:bg-primary/80 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:-translate-y-1"
                             >
                                 <ShoppingBag className="w-5 h-5" />
-                                {t.hero?.shopNow || "Shop Now"}
+                                {shopNow}
                             </button>
 
                             <button
                                 onClick={handleClose}
                                 className="mt-4 text-sm text-gray-500 hover:text-gray-300 transition-colors"
                             >
-                                {t.announcement?.close || "Close"}
+                                {close}
                             </button>
                         </div>
                     </motion.div>
