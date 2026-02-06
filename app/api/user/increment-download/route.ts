@@ -8,8 +8,10 @@ const limiter = rateLimit({
     uniqueTokenPerInterval: 500, // Max 500 users per second
 });
 
+import { authOptions } from "@/lib/authOptions";
+
 export async function POST(req: NextRequest) {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
 
     if (!session || !session.user?.email || !(session.user as any).isMember) {
         return NextResponse.json({ error: "Unauthorized or Not a Member" }, { status: 403 });

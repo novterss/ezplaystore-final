@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { handler } from '../../auth/[...nextauth]/route'; // Adjust import path to where handler is defined
+import { authOptions } from '@/lib/authOptions';
 
 const GUILD_ID = '1452701844366168126'; // EzPlay Store Thailand
 
