@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession, signIn } from 'next-auth/react';
-import { Download, Lock } from 'lucide-react';
+import { Download, Lock, RefreshCw } from 'lucide-react';
 import Image from 'next/image';
 import { useUnlock } from '../contexts/UnlockContext'; // Keeping import although unused in this logic for now
 import ClickSpark from './ClickSpark';
@@ -55,6 +55,31 @@ const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
   }
 
   // 2. Logged In BUT Not in Discord (isMember = false)
+  // 2. Logged In BUT Not in Discord (isMember = false)
+  // Check Status logic
+  const [isChecking, setIsChecking] = useState(false);
+  const checkMembership = async () => {
+    setIsChecking(true);
+    if ((session as any)?.accessToken) {
+      try {
+        const res = await fetch('/api/discord/check-member', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ accessToken: (session as any).accessToken })
+        });
+        const data = await res.json();
+        if (data.isMember) {
+          window.location.reload(); // Reload to update session
+        } else {
+          alert("ยังตรวจไม่พบการเข้าร่วมเซิฟเวอร์ (Not found in server). กรุณาเข้าร่วมก่อนลองอีกครั้ง");
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    setIsChecking(false);
+  };
+
   if (!(session.user as any).isMember) {
     return (
       <div className="space-y-3 mt-6">
@@ -67,6 +92,14 @@ const ProtectedDownload = ({ fileUrl, fileName }: ProtectedDownloadProps) => {
             Join Discord to Unlock
           </button>
         </ClickSpark>
+
+        <button
+          onClick={checkMembership}
+          disabled={isChecking}
+          className="w-full text-xs text-gray-400 hover:text-white underline cursor-pointer disabled:opacity-50"
+        >
+          {isChecking ? "Checking..." : "เข้าเซิฟแล้ว? กดที่นี่เพื่อรีเฟรช (Refresh Status)"}
+        </button>
       </div>
     );
   }

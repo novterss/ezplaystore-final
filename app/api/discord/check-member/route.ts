@@ -16,6 +16,8 @@ export async function GET() {
     return NextResponse.json({ error: 'Use POST with accessToken' }, { status: 405 });
 }
 
+import { supabase } from '@/lib/supabase';
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -23,6 +25,12 @@ export async function POST(req: Request) {
 
         if (!accessToken) {
             return NextResponse.json({ isMember: false, error: 'No access token' }, { status: 401 });
+        }
+
+        // 1. Verify User from Session (Security)
+        const session = await getServerSession(authOptions);
+        if (!session || !session.user?.email) {
+            return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
         // 2. Call Discord API
@@ -39,6 +47,18 @@ export async function POST(req: Request) {
 
         const guilds = await response.json();
         const isMember = guilds.some((g: any) => g.id === GUILD_ID);
+
+        // 3. Update Supabase if Member
+        if (isMember) {
+            const { error } = await supabase
+                .from('users')
+                .update({ is_member: true })
+                .eq('email', session.user.email);
+
+            if (error) {
+                console.error("Failed to sync member status:", error);
+            }
+        }
 
         return NextResponse.json({ isMember });
     } catch (error) {
