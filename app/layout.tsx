@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Kanit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "../components/Providers";
@@ -111,6 +112,7 @@ export default function RootLayout({
           </GlobalErrorBoundary>
           {/* 🚀 ยิงมึงไปดาวอังคาร */}
         </Providers>
+        <Analytics />
         {/* 🏴‍☠️ โจรก็อป = โจรจน */}
         {/* 😎 Made with love, not for copy */}
         {/* 🔒 Anti-Copy System Activated */}
