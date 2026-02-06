@@ -5,7 +5,7 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MusicPlayer = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false); // Default to false, will try to play on mount
     const [volume, setVolume] = useState(0.3);
     const [isHovered, setIsHovered] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -16,7 +16,41 @@ const MusicPlayer = () => {
         audio.volume = volume;
         audioRef.current = audio;
 
+        // Auto-play attempt
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                setIsPlaying(true);
+            }).catch(() => {
+                // Auto-play prevented by browser policy - silent fail as we have a fallback
+                setIsPlaying(false);
+            });
+        }
+
+        // Global unlocker for browsers that block auto-play
+        const handleGlobalClick = () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    setIsPlaying(true);
+                }).catch(() => {
+                    // Silent fail
+                });
+            }
+            // Remove listeners after first interaction attempt
+            document.removeEventListener('click', handleGlobalClick);
+            document.removeEventListener('keydown', handleGlobalClick);
+            document.removeEventListener('scroll', handleGlobalClick);
+            document.removeEventListener('touchstart', handleGlobalClick);
+        };
+
+        // Aggressively listen for ANY user interaction
+        document.addEventListener('click', handleGlobalClick);
+        document.addEventListener('keydown', handleGlobalClick);
+        document.addEventListener('scroll', handleGlobalClick);
+        document.addEventListener('touchstart', handleGlobalClick);
+
         return () => {
+            document.removeEventListener('click', handleGlobalClick);
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
@@ -46,17 +80,21 @@ const MusicPlayer = () => {
 
     return (
         <div
-            className="fixed bottom-6 left-6 z-50 flex items-center gap-3 p-2 pr-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg hover:bg-black/60 transition-all group"
+            className={`fixed bottom-6 left-6 z-50 flex items-center gap-3 p-2 pr-4 rounded-full border shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all group ${isPlaying ? 'bg-black/60 border-primary/50 animate-pulse-slow shadow-[0_0_30px_rgba(34,197,94,0.4)]' : 'bg-black/40 border-white/10 hover:bg-black/60'}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <button
                 onClick={toggleMusic}
-                className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white active:scale-95"
+                className={`p-3 rounded-full transition-all text-white active:scale-95 ${isPlaying ? 'bg-primary/20 hover:bg-primary/30' : 'bg-white/10 hover:bg-white/20'}`}
                 aria-label="Toggle Background Music"
             >
                 {isPlaying ? (
-                    <Volume2 className="w-5 h-5 animate-pulse text-green-400" />
+                    <div className="flex items-center gap-1">
+                        <span className="w-1 h-3 bg-green-400 rounded-full animate-[music-bar_1s_ease-in-out_infinite]" />
+                        <span className="w-1 h-5 bg-green-400 rounded-full animate-[music-bar_1.2s_ease-in-out_infinite_0.1s]" />
+                        <span className="w-1 h-4 bg-green-400 rounded-full animate-[music-bar_0.8s_ease-in-out_infinite_0.2s]" />
+                    </div>
                 ) : (
                     <VolumeX className="w-5 h-5 text-gray-400" />
                 )}

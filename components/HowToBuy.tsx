@@ -2,35 +2,38 @@
 
 import { motion } from 'framer-motion';
 import { UserPlus, Ticket, CreditCard } from 'lucide-react';
-
-const steps = [
-    {
-        id: 1,
-        title: 'เข้าสู่ Discord',
-        titleEn: 'Join Community',
-        description: 'กดปุ่ม Join Discord เพื่อเข้าสู่คอมมูนิตี้ของเรา',
-        icon: UserPlus,
-        color: 'from-blue-500 to-indigo-500'
-    },
-    {
-        id: 2,
-        title: 'เปิด Ticket',
-        titleEn: 'Open Ticket',
-        description: 'เลือกห้องสั่งซื้อสินค้าและกดเปิด Ticket เพื่อคุยกับทีมงาน',
-        icon: Ticket,
-        color: 'from-purple-500 to-pink-500'
-    },
-    {
-        id: 3,
-        title: 'ชำระเงิน & รับของ',
-        titleEn: 'Pay & Receive',
-        description: 'ชำระเงินผ่านช่องทางที่สะดวกและรับสินค้าทันที',
-        icon: CreditCard,
-        color: 'from-green-500 to-emerald-500'
-    }
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 const HowToBuy = () => {
+    const { t } = useLanguage();
+
+    const steps = [
+        {
+            id: 1,
+            title: t.howToBuy.step1,
+            titleEn: t.howToBuy.step1En,
+            description: t.howToBuy.step1Desc,
+            icon: UserPlus,
+            color: 'from-blue-500 to-indigo-500'
+        },
+        {
+            id: 2,
+            title: t.howToBuy.step2,
+            titleEn: t.howToBuy.step2En,
+            description: t.howToBuy.step2Desc,
+            icon: Ticket,
+            color: 'from-purple-500 to-pink-500'
+        },
+        {
+            id: 3,
+            title: t.howToBuy.step3,
+            titleEn: t.howToBuy.step3En,
+            description: t.howToBuy.step3Desc,
+            icon: CreditCard,
+            color: 'from-green-500 to-emerald-500'
+        }
+    ];
+
     return (
         <section className="container mx-auto px-4 py-24 mb-16 relative z-10">
             <motion.div
@@ -40,7 +43,7 @@ const HowToBuy = () => {
                 className="text-center mb-16"
             >
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                    ขั้นตอนการสั่งซื้อ <span className="text-gray-500 text-3xl block md:inline mt-2 md:mt-0">(How to Buy)</span>
+                    {t.howToBuy.title} <span className="text-gray-500 text-3xl block md:inline mt-2 md:mt-0">{t.howToBuy.subtitle}</span>
                 </h2>
                 <div className="h-1 w-24 bg-gradient-to-r from-primary to-purple-400 mx-auto rounded-full" />
             </motion.div>

@@ -5,74 +5,74 @@ export const freeCategories = [
         image: '/images/adobe.jpg',
         items: [
             // After Effects
-            { name: 'After Effects 2026 Win', url: 'https://pixeldrain.com/u/7Fu4NQqA', tag: 'New' },
-            { name: 'After Effects 2025.6 WIN', url: 'https://pixeldrain.com/u/AJvwJ4tG' },
-            { name: 'After Effects 2024.4', url: 'https://pixeldrain.com/u/Gt6XmdR9' },
-            { name: 'After Effects 2023 WIN', url: 'https://pixeldrain.com/u/iViNM8uc' },
-            { name: 'After Effects 2021 WIN', url: 'https://pixeldrain.com/u/LPrfhXHv' },
-            { name: 'After Effects 2020 (v17.7) Win', url: 'https://pixeldrain.com/u/RQyayo7K' },
+            { name: 'After Effects 2026 Win', url: 'https://pixeldrain.com/u/7Fu4NQqA', tag: 'New', image: '/images/ae.jpg' },
+            { name: 'After Effects 2025.6 WIN', url: 'https://pixeldrain.com/u/AJvwJ4tG', image: '/images/ae.jpg' },
+            { name: 'After Effects 2024.4', url: 'https://pixeldrain.com/u/Gt6XmdR9', image: '/images/ae.jpg' },
+            { name: 'After Effects 2023 WIN', url: 'https://pixeldrain.com/u/iViNM8uc', image: '/images/ae.jpg' },
+            { name: 'After Effects 2021 WIN', url: 'https://pixeldrain.com/u/LPrfhXHv', image: '/images/ae.jpg' },
+            { name: 'After Effects 2020 (v17.7) Win', url: 'https://pixeldrain.com/u/RQyayo7K', image: '/images/ae.jpg' },
 
             // Media Encoder
-            { name: 'Media Encoder 2026', url: 'https://pixeldrain.com/u/GfiPWYdR' },
-            { name: 'Media Encoder 2025.6', url: 'https://pixeldrain.com/u/GfgUa7eA' },
-            { name: 'Media Encoder 2024.5', url: 'https://pixeldrain.com/u/GfiPWYdR' },
-            { name: 'Media Encoder 2023.2', url: 'https://pixeldrain.com/u/fS5jYvhw' },
-            { name: 'Media Encoder 2021', url: 'https://pixeldrain.com/u/mdJGkfhD' },
-            { name: 'Media Encoder 2020', url: 'https://pixeldrain.com/u/Yy8cD7Qi' },
+            { name: 'Media Encoder 2026', url: 'https://pixeldrain.com/u/GfiPWYdR', image: '/images/Me.png' },
+            { name: 'Media Encoder 2025.6', url: 'https://pixeldrain.com/u/GfgUa7eA', image: '/images/Me.png' },
+            { name: 'Media Encoder 2024.5', url: 'https://pixeldrain.com/u/GfiPWYdR', image: '/images/Me.png' },
+            { name: 'Media Encoder 2023.2', url: 'https://pixeldrain.com/u/fS5jYvhw', image: '/images/Me.png' },
+            { name: 'Media Encoder 2021', url: 'https://pixeldrain.com/u/mdJGkfhD', image: '/images/Me.png' },
+            { name: 'Media Encoder 2020', url: 'https://pixeldrain.com/u/Yy8cD7Qi', image: '/images/Me.png' },
 
             // Premiere Pro
-            { name: 'Premiere Pro 2026', url: 'https://pixeldrain.com/u/h55RGoHf', tag: 'Hot' },
-            { name: 'Premiere Pro 2025.5', url: 'https://pixeldrain.com/u/rAi8ZUDG' },
-            { name: 'Premiere Pro 2024.0', url: 'https://pixeldrain.com/u/BXs2eBhN' },
+            { name: 'Premiere Pro 2026', url: 'https://pixeldrain.com/u/h55RGoHf', tag: 'Hot', image: '/images/pr.png' },
+            { name: 'Premiere Pro 2025.5', url: 'https://pixeldrain.com/u/rAi8ZUDG', image: '/images/pr.png' },
+            { name: 'Premiere Pro 2024.0', url: 'https://pixeldrain.com/u/BXs2eBhN', image: '/images/pr.png' },
 
             // Speech To Text
-            { name: 'Speech To Text 2026', url: 'https://pixeldrain.com/u/aeqYJ5EA' },
-            { name: 'Speech to Text 2025', url: 'https://pixeldrain.com/u/K8HqzkYm' },
-            { name: 'Speech to Text 2024', url: 'https://pixeldrain.com/u/XSY5sRtd' },
+            { name: 'Speech To Text 2026', url: 'https://pixeldrain.com/u/aeqYJ5EA', image: '/images/spt.jpg' },
+            { name: 'Speech to Text 2025', url: 'https://pixeldrain.com/u/K8HqzkYm', image: '/images/spt.jpg' },
+            { name: 'Speech to Text 2024', url: 'https://pixeldrain.com/u/XSY5sRtd', image: '/images/spt.jpg' },
 
             // Photoshop
-            { name: 'Photoshop 2026 (v27.0)', url: 'https://pixeldrain.com/u/4Q2b6pEF', tag: 'Popular' },
-            { name: 'Photoshop 2025 (26.11)', url: 'https://pixeldrain.com/u/ZxAswi4P' },
-            { name: 'Photoshop 2024 (v25.7)', url: 'https://pixeldrain.com/u/ZxAswi4P' },
-            { name: 'Photoshop 2023 (v24.4)', url: 'https://pixeldrain.com/u/PWFtjAqX' },
+            { name: 'Photoshop 2026 (v27.0)', url: 'https://pixeldrain.com/u/4Q2b6pEF', tag: 'Popular', image: '/images/ps.png' },
+            { name: 'Photoshop 2025 (26.11)', url: 'https://pixeldrain.com/u/ZxAswi4P', image: '/images/ps.png' },
+            { name: 'Photoshop 2024 (v25.7)', url: 'https://pixeldrain.com/u/ZxAswi4P', image: '/images/ps.png' },
+            { name: 'Photoshop 2023 (v24.4)', url: 'https://pixeldrain.com/u/PWFtjAqX', image: '/images/ps.png' },
 
             // Substance
-            { name: 'Substance Designer 14.1.0', url: 'https://pixeldrain.com/u/8drodEV2' },
-            { name: 'Substance Painter 10.1.2', url: 'https://pixeldrain.com/u/4zX4D6P5' },
+            { name: 'Substance Designer 14.1.0', url: 'https://pixeldrain.com/u/8drodEV2', image: '/images/Ds.png' },
+            { name: 'Substance Painter 10.1.2', url: 'https://pixeldrain.com/u/4zX4D6P5', image: '/images/pt.png' },
             { name: 'Substance Modeler 1.18.0', url: 'https://pixeldrain.com/u/WgVN8EUg' },
 
             // Others
-            { name: 'Animate 24.0.12', url: 'https://pixeldrain.com/u/xHwmBZtc' },
-            { name: 'Audition 2025.3', url: 'https://pixeldrain.com/u/9vJstMbs' },
-            { name: 'Illustrator 2026 (30.1)', url: 'https://pixeldrain.com/u/9vJstMbs' },
-            { name: 'Illustrator 2025 (29.8.1)', url: 'https://pixeldrain.com/u/P7dJ7EzV' },
-            { name: 'InCopy 2026 (21.1)', url: 'https://pixeldrain.com/u/NyBb6p44' },
-            { name: 'InCopy 2025 (20.5)', url: 'https://pixeldrain.com/u/BvfA9ja8' },
-            { name: 'InDesign 2026 (21.1)', url: 'https://pixeldrain.com/u/Q5UT44JN' },
-            { name: 'InDesign 2025 (20.5)', url: 'https://pixeldrain.com/u/yUFpZ2SG' },
-            { name: 'Lightroom Classic v14.5.1', url: 'https://pixeldrain.com/u/12CcF1oZ' },
+            { name: 'Animate 24.0.12', url: 'https://pixeldrain.com/u/xHwmBZtc', image: '/images/an.png' },
+            { name: 'Audition 2025.3', url: 'https://pixeldrain.com/u/9vJstMbs', image: '/images/Au.png' },
+            { name: 'Illustrator 2026 (30.1)', url: 'https://pixeldrain.com/u/9vJstMbs', image: '/images/ai.png' },
+            { name: 'Illustrator 2025 (29.8.1)', url: 'https://pixeldrain.com/u/P7dJ7EzV', image: '/images/ai.png' },
+            { name: 'InCopy 2026 (21.1)', url: 'https://pixeldrain.com/u/NyBb6p44', image: '/images/ic.png' },
+            { name: 'InCopy 2025 (20.5)', url: 'https://pixeldrain.com/u/BvfA9ja8', image: '/images/ic.png' },
+            { name: 'InDesign 2026 (21.1)', url: 'https://pixeldrain.com/u/Q5UT44JN', image: '/images/id.png' },
+            { name: 'InDesign 2025 (20.5)', url: 'https://pixeldrain.com/u/yUFpZ2SG', image: '/images/id.png' },
+            { name: 'Lightroom Classic v14.5.1', url: 'https://pixeldrain.com/u/12CcF1oZ', image: '/images/lrc.png' },
 
             // Blackmagic
-            { name: 'DaVinci Resolve Studio 20.X', url: 'https://pixeldrain.com/u/Hsqetdzp' },
+            { name: 'DaVinci Resolve Studio 20.X', url: 'https://pixeldrain.com/u/Hsqetdzp', image: '/images/davinciresolve.png' },
 
             // Vegas
-            { name: 'Vegas Pro 23.0.0.278', url: 'https://pixeldrain.com/u/qkg6xh3i' },
-            { name: 'Vegas Pro Deep Learning model 23.1', url: 'https://pixeldrain.com/u/gijjQk8D' },
+            { name: 'Vegas Pro 23.0.0.278', url: 'https://pixeldrain.com/u/qkg6xh3i', image: '/images/vegas pro.jpg' },
+            { name: 'Vegas Pro Deep Learning model 23.1', url: 'https://pixeldrain.com/u/gijjQk8D', image: '/images/vegas pro.jpg' },
 
             // Topaz
-            { name: 'Topaz Video', url: 'https://pixeldrain.com/u/jCZq3ABi' },
-            { name: 'Topaz Photo', url: 'https://pixeldrain.com/u/jCZq3ABi' },
-            { name: 'Topaz Gigapixel', url: 'https://pixeldrain.com/u/YQtHLn9Q' },
+            { name: 'Topaz Video', url: 'https://pixeldrain.com/u/jCZq3ABi', image: '/images/topazai.jpg' },
+            { name: 'Topaz Photo', url: 'https://pixeldrain.com/u/jCZq3ABi', image: '/images/topazai.jpg' },
+            { name: 'Topaz Gigapixel', url: 'https://pixeldrain.com/u/YQtHLn9Q', image: '/images/topazai.jpg' },
 
             // Misc
-            { name: 'TouchDesigner Pro 2022.3', url: 'https://pixeldrain.com/u/tW3ZSaDx' },
-            { name: 'Marvelous Designer Enterprise 2025.2.81', url: 'https://pixeldrain.com/u/yGpSjBYU' },
-            { name: 'FL Studio 25.1.6', url: 'https://pixeldrain.com/u/q1L81LrP', tag: 'Updated' },
+            { name: 'TouchDesigner Pro 2022.3', url: 'https://pixeldrain.com/u/tW3ZSaDx', image: '/images/touchdesigner pro.png' },
+            { name: 'Marvelous Designer Enterprise 2025.2.81', url: 'https://pixeldrain.com/u/yGpSjBYU', image: '/images/marvelousdesigner.jpg' },
+            { name: 'FL Studio 25.1.6', url: 'https://pixeldrain.com/u/q1L81LrP', tag: 'Updated', image: '/images/flstudio.png' },
             { name: 'Serum 2.0.20', url: 'https://pixeldrain.com/u/yCQ7ySGv' },
-            { name: 'Cinema 4D 2026.0', url: 'https://pixeldrain.com/u/ryYHX1Y3' },
-            { name: 'Blender', url: 'https://www.blender.org/download/', tag: 'Free' },
-            { name: 'Flowframes', url: 'https://nmkd.itch.io/flowframes', tag: 'Free' },
-            { name: 'Handbrake', url: 'https://handbrake.fr/', tag: 'Free' }
+            { name: 'Cinema 4D 2026.0', url: 'https://pixeldrain.com/u/ryYHX1Y3', image: '/images/cinema4d.png' },
+            { name: 'Blender', url: 'https://www.blender.org/download/', tag: 'Free', image: '/images/blender.png' },
+            { name: 'Flowframes', url: 'https://nmkd.itch.io/flowframes', tag: 'Free', image: '/images/flowflames.png' },
+            { name: 'Handbrake', url: 'https://handbrake.fr/', tag: 'Free', image: '/images/handbrake.png' }
         ]
     },
     {
@@ -81,54 +81,57 @@ export const freeCategories = [
         image: '/images/windows.jpg',
         items: [
             // Office
-            { name: 'Microsoft 365 (Online x64)', url: 'https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x64&language=th-th&version=O16GA', tag: 'Best Seller' },
-            { name: 'Microsoft 365 (Online x32)', url: 'https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x86&language=th-th&version=O16GA' },
-            { name: 'Microsoft 365 (Offline x32-x64)', url: 'https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/th-th/O365ProPlusRetail.img' },
+            { name: 'Microsoft 365 (Online x64)', url: 'https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x64&language=th-th&version=O16GA', tag: 'Best Seller', image: '/images/office.jpg' },
+            { name: 'Microsoft 365 (Online x32)', url: 'https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365ProPlusRetail&platform=x86&language=th-th&version=O16GA', image: '/images/office.jpg' },
+            { name: 'Microsoft 365 (Offline x32-x64)', url: 'https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/th-th/O365ProPlusRetail.img', image: '/images/office.jpg' },
 
             // Win 11
-            { name: 'Windows 11 Consumer 25H2 (Thai)', url: 'https://buzzheavier.com/ucolvflmz4kg', tag: 'New' },
-            { name: 'Windows 11 Consumer 25H2 (Eng-UK)', url: 'https://buzzheavier.com/k8t04ms76ylf' },
-            { name: 'Windows 11 Business 25H2 (Thai)', url: 'https://buzzheavier.com/h9mikxvwhdy4' },
-            { name: 'Windows 11 Business 25H2 (Eng-UK)', url: 'https://buzzheavier.com/2xhmu8xhkohg' },
-            { name: 'Windows 11 IoT Enterprise 25H2', url: 'https://buzzheavier.com/k1g5we7lqkw9' },
+            { name: 'Windows 11 Consumer 25H2 (Thai)', url: 'https://buzzheavier.com/ucolvflmz4kg', tag: 'New', image: '/images/windows.jpg' },
+            { name: 'Windows 11 Consumer 25H2 (Eng-UK)', url: 'https://buzzheavier.com/k8t04ms76ylf', image: '/images/windows.jpg' },
+            { name: 'Windows 11 Business 25H2 (Thai)', url: 'https://buzzheavier.com/h9mikxvwhdy4', image: '/images/windows.jpg' },
+            { name: 'Windows 11 Business 25H2 (Eng-UK)', url: 'https://buzzheavier.com/2xhmu8xhkohg', image: '/images/windows.jpg' },
+            { name: 'Windows 11 IoT Enterprise 25H2', url: 'https://buzzheavier.com/k1g5we7lqkw9', image: '/images/windows.jpg' },
 
             // Win 10
-            { name: 'Windows 10 Consumer 22H2 (x64 Eng-UK)', url: 'https://buzzheavier.com/nll03agoin1h' },
-            { name: 'Windows 10 Consumer 22H2 (x86 Eng-UK)', url: 'https://buzzheavier.com/9504t7kwpfhp' },
-            { name: 'Windows 10 Consumer 22H2 (x64 Thai)', url: 'https://buzzheavier.com/s19npdbzq0oj' },
-            { name: 'Windows 10 Consumer 22H2 (x86 Thai)', url: 'https://buzzheavier.com/h9urca6ad63x' },
-            { name: 'Windows 10 Business 22H2 (x64 Eng-UK)', url: 'https://buzzheavier.com/qbmtbros0ngg' },
-            { name: 'Windows 10 Business 22H2 (x86 Eng-UK)', url: 'https://buzzheavier.com/ip9uczcr4ojq' },
-            { name: 'Windows 10 Business 22H2 (x64 Thai)', url: 'https://buzzheavier.com/1j7xsrrlagjy' },
-            { name: 'Windows 10 Business 22H2 (x86 Thai)', url: 'https://buzzheavier.com/0buoh4a7u5aj' },
-            { name: 'Windows 10 IoT Enterprise 22H2', url: 'https://buzzheavier.com/5eerq83cpgwi' },
+            { name: 'Windows 10 Consumer 22H2 (x64 Eng-UK)', url: 'https://buzzheavier.com/nll03agoin1h', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Consumer 22H2 (x86 Eng-UK)', url: 'https://buzzheavier.com/9504t7kwpfhp', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Consumer 22H2 (x64 Thai)', url: 'https://buzzheavier.com/s19npdbzq0oj', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Consumer 22H2 (x86 Thai)', url: 'https://buzzheavier.com/h9urca6ad63x', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Business 22H2 (x64 Eng-UK)', url: 'https://buzzheavier.com/qbmtbros0ngg', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Business 22H2 (x86 Eng-UK)', url: 'https://buzzheavier.com/ip9uczcr4ojq', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Business 22H2 (x64 Thai)', url: 'https://buzzheavier.com/1j7xsrrlagjy', image: '/images/windows.jpg' },
+            { name: 'Windows 10 Business 22H2 (x86 Thai)', url: 'https://buzzheavier.com/0buoh4a7u5aj', image: '/images/windows.jpg' },
+            { name: 'Windows 10 IoT Enterprise 22H2', url: 'https://buzzheavier.com/5eerq83cpgwi', image: '/images/windows.jpg' },
 
             // Windows LTSC
-            { name: 'Windows 11 LTSC 2024 (x64 Eng-UK)', url: 'https://buzzheavier.com/ed3qieys8404', tag: 'Stable' },
-            { name: 'Windows 10 LTSC 2021 (x64 Eng-UK)', url: 'https://buzzheavier.com/eaz0ug2ovut3' },
-            { name: 'Windows 10 LTSC 2021 (x86 Eng-UK)', url: 'https://buzzheavier.com/pr502wxskyyo' },
-            { name: 'Windows 10 LTSC 2021 (x64 Thai)', url: 'https://buzzheavier.com/d286p8h0kzbp' },
-            { name: 'Windows 10 LTSC 2021 (x86 Thai)', url: 'https://buzzheavier.com/l5ndpddanu7h' },
-            // ... omitting older LTSC/LTSB links to save space unless requested, but user gave them so I should probably include them...
-            { name: 'Windows 10 LTSC 2019 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-uk_windows_10_enterprise_ltsc_2019_x64_dvd_723dfbc1.iso' },
-            { name: 'Windows 10 LTSC 2019 (x64 Thai)', url: 'https://drive.massgrave.dev/th_windows_10_enterprise_ltsc_2019_x64_dvd_ae87916a.iso' },
-            { name: 'Windows 10 LTSB 2016 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-gb_windows_10_enterprise_2016_ltsb_x64_dvd_9060114.iso' },
-            { name: 'Windows 10 LTSB 2015 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-gb_windows_10_enterprise_2015_ltsb_x64_dvd_6848456.iso' },
+            { name: 'Windows 11 LTSC 2024 (x64 Eng-UK)', url: 'https://buzzheavier.com/ed3qieys8404', tag: 'Stable', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSC 2021 (x64 Eng-UK)', url: 'https://buzzheavier.com/eaz0ug2ovut3', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSC 2021 (x86 Eng-UK)', url: 'https://buzzheavier.com/pr502wxskyyo', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSC 2021 (x64 Thai)', url: 'https://buzzheavier.com/d286p8h0kzbp', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSC 2021 (x86 Thai)', url: 'https://buzzheavier.com/l5ndpddanu7h', image: '/images/windows.jpg' },
+
+            // Older LTSC
+            { name: 'Windows 10 LTSC 2019 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-uk_windows_10_enterprise_ltsc_2019_x64_dvd_723dfbc1.iso', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSC 2019 (x64 Thai)', url: 'https://drive.massgrave.dev/th_windows_10_enterprise_ltsc_2019_x64_dvd_ae87916a.iso', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSB 2016 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-gb_windows_10_enterprise_2016_ltsb_x64_dvd_9060114.iso', image: '/images/windows.jpg' },
+            { name: 'Windows 10 LTSB 2015 (x64 Eng-UK)', url: 'https://drive.massgrave.dev/en-gb_windows_10_enterprise_2015_ltsb_x64_dvd_6848456.iso', image: '/images/windows.jpg' },
 
             // Server
-            { name: 'Windows Server 2025', url: 'https://oemsoc.download.prss.microsoft.com/dbazure/X23-81958_26100.1742.240906-0331.ge_release_svc_refresh_SERVER_OEMRET_x64FRE_en-us.iso_909fa35d-ba98-407d-9fef-8df76f75e133' },
-            { name: 'Windows Server 2022', url: 'https://buzzheavier.com/3ru3oklcysud' },
-            { name: 'Windows Server 23H2 (No GUI)', url: 'https://buzzheavier.com/hufh6aa3lftt' },
-            { name: 'Windows Server 2019', url: 'https://buzzheavier.com/ue3zuuxwwa59' },
-            { name: 'Windows Server 2016', url: 'https://drive.massgrave.dev/en_windows_server_2016_x64_dvd_9327751.iso' },
-            { name: 'Windows Server 2012 R2', url: 'https://drive.massgrave.dev/en_windows_server_2012_r2_vl_with_update_x64_dvd_6052766.iso' },
-            { name: 'Windows Server 2008 R2 SP1', url: 'https://drive.massgrave.dev/en_windows_server_2008_r2_with_sp1_vl_build_x64_dvd_617403.iso' },
-            { name: 'Windows Server 2008 SP2', url: 'https://drive.massgrave.dev/en_windows_server_2008_with_sp2_x64_dvd_342336.iso' }
+            { name: 'Windows Server 2025', url: 'https://oemsoc.download.prss.microsoft.com/dbazure/X23-81958_26100.1742.240906-0331.ge_release_svc_refresh_SERVER_OEMRET_x64FRE_en-us.iso_909fa35d-ba98-407d-9fef-8df76f75e133', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2022', url: 'https://buzzheavier.com/3ru3oklcysud', image: '/images/windows.jpg' },
+            { name: 'Windows Server 23H2 (No GUI)', url: 'https://buzzheavier.com/hufh6aa3lftt', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2019', url: 'https://buzzheavier.com/ue3zuuxwwa59', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2016', url: 'https://drive.massgrave.dev/en_windows_server_2016_x64_dvd_9327751.iso', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2012 R2', url: 'https://drive.massgrave.dev/en_windows_server_2012_r2_vl_with_update_x64_dvd_6052766.iso', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2008 R2 SP1', url: 'https://drive.massgrave.dev/en_windows_server_2008_r2_with_sp1_vl_build_x64_dvd_617403.iso', image: '/images/windows.jpg' },
+            { name: 'Windows Server 2008 SP2', url: 'https://drive.massgrave.dev/en_windows_server_2008_with_sp2_x64_dvd_342336.iso', image: '/images/windows.jpg' }
         ]
     },
     {
         id: 'plugins',
-        name: 'Plugins (AE/PR)',
+        name: 'Plugins (.aex)',
+        image: '/images/freecover.png',
+        itemFallbackImage: '/images/plugin.png',
         items: [
             { name: 'BorisFX Continuum (BCC) 2026.0', url: 'https://pixeldrain.com/u/9GedTDgJ' },
             { name: 'Sapphire 2026.0', url: 'https://pixeldrain.com/u/3jA6Amu4', tag: 'Essential' },
@@ -221,6 +224,8 @@ export const freeCategories = [
     {
         id: 'extensions',
         name: 'Extensions (.zxp)',
+        image: '/images/bundle.png',
+        itemFallbackImage: '/images/extension.png',
         items: [
             { name: 'AE Viewer Pro 2.2', url: 'https://pixeldrain.com/u/txnajfHk' },
             { name: 'Anubis', url: 'https://pixeldrain.com/u/MdJkXwyk' },
@@ -269,6 +274,8 @@ export const freeCategories = [
     {
         id: 'scripts',
         name: 'Scripts (.jsx)',
+        image: '/images/freecover.png',
+        itemFallbackImage: '/images/script.png',
         items: [
             { name: '3DfyPro', url: 'https://pixeldrain.com/u/vWrPPuPJ' },
             { name: 'AE Global Renamer', url: 'https://pixeldrain.com/u/UdqVpKxn' },

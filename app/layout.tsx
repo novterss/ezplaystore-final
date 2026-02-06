@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "../components/Providers";
-import StarBackground from "../components/StarBackground";
+import { UnlockProvider } from "../contexts/UnlockContext";
+import InteractiveStarBackground from "../components/InteractiveStarBackground";
 import NewsTicker from "../components/NewsTicker";
 import BackToTop from "../components/BackToTop";
-import FloatingDiscord from "../components/FloatingDiscord";
 import LoadingScreen from "../components/LoadingScreen";
-
+import CursorTrail from "../components/CursorTrail";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import MusicPlayer from "../components/MusicPlayer";
+import CookieBanner from '@/components/CookieBanner';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const kanit = Kanit({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -16,18 +21,18 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-  title: "EzplaystoreTh | คลังแสงเกมและโปรแกรมระดับเทพ",
-  description: "จำหน่ายโปรเกม Spoofer ปลดแบน และแจกฟรี Software/Plugins/Scripts สำหรับนักตัดต่อและเกมเมอร์ ครบจบในที่เดียว",
+  title: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพ",
+  description: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพสำหรับเกมเมอร์และครีเอเตอร์ จำหน่าย Spoofer ปลดแบน HWID คุณภาพสูง และแจกฟรี Plugins, Scripts, Extensions สำหรับ Adobe และ Windows ครบจบในที่เดียว ปลอดภัย เชื่อถือได้ พร้อมซัพพอร์ตตลอด 24 ชม.",
   openGraph: {
-    title: "EzplaystoreTh | คลังแสงเกมและโปรแกรมระดับเทพ",
-    description: "จำหน่ายโปรเกม Spoofer ปลดแบน และแจกฟรี Software/Plugins/Scripts สำหรับนักตัดต่อและเกมเมอร์ ครบจบในที่เดียว",
-    images: ["/images/logo.png"], // ✅ แก้ .jpg เป็น .png ให้ตรงไฟล์จริง
+    title: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพ",
+    description: "EzplaystoreTh | ศูนย์รวมโปรแกรมและเครื่องมือระดับเทพสำหรับเกมเมอร์และครีเอเตอร์ จำหน่าย Spoofer ปลดแบน HWID คุณภาพสูง และแจกฟรี Plugins, Scripts, Extensions สำหรับ Adobe และ Windows ครบจบในที่เดียว ปลอดภัย เชื่อถือได้ พร้อมซัพพอร์ตตลอด 24 ชม.",
+    images: ["/images/ezicon3.png"],
     type: "website",
   },
   icons: {
-    icon: '/images/logo.png',      // ✅ เปลี่ยนมาใช้รูปเดียวกับ Logo หลัก (ชัวร์กว่า)
-    shortcut: '/images/logo.png',
-    apple: '/images/logo.png',
+    icon: '/images/ezicon3.png',
+    shortcut: '/images/ezicon3.png',
+    apple: '/images/ezicon3.png',
   },
 };
 
@@ -39,14 +44,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${kanit.variable} antialiased text-white font-sans`}>
-        <Providers> {/* ✅ ครอบ Providers ไว้ตรงนี้ */}
-          <LoadingScreen />
-          <StarBackground />
-          <NewsTicker />
-          {children}
-          <BackToTop />
-          <FloatingDiscord />
-        </Providers> {/* ✅ ปิด Providers ตรงนี้ */}
+        <Providers>
+          {/* Background is now handled by InteractiveStarBackground which is fixed position */}
+          {/* Background is now handled by InteractiveStarBackground which is fixed position */}
+          <InteractiveStarBackground />
+          <CursorTrail />
+
+          <UnlockProvider>
+            <LoadingScreen />
+            <CursorTrail />
+            <Navbar />
+            <NewsTicker />
+            {children}
+            <CookieBanner />
+            <BackToTop />
+            <ThemeSwitcher />
+            <MusicPlayer />
+            <Footer />
+          </UnlockProvider>
+        </Providers>
       </body>
     </html>
   );

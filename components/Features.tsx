@@ -2,35 +2,38 @@
 
 import { ShieldCheck, BookOpen, Zap, Users, Facebook, Youtube } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const features = [
-    {
-        icon: ShieldCheck,
-        title: 'ปลอดภัย 100%',
-        desc: 'สินค้าทุกชิ้นผ่านการเทสต์จริง ปลอดภัย ไม่เสี่ยงโดนแบนย้อนหลัง',
-        color: 'text-green-400'
-    },
-    {
-        icon: BookOpen,
-        title: 'สอนจับมือทำ',
-        desc: 'มีคลิปสอนละเอียดทุกขั้นตอน แอดมินพร้อมรีโมทช่วยแก้ปัญหาจนกว่าจะได้',
-        color: 'text-blue-400'
-    },
-    {
-        icon: Zap,
-        title: 'ส่งของทันที',
-        desc: 'ระบบอัตโนมัติ 24 ชม. กดปุ่มปุ๊บ ได้ของปั๊บ ไม่ต้องรอนาน',
-        color: 'text-yellow-400'
-    },
-    {
-        icon: Users,
-        title: 'ชุมชนคุณภาพ',
-        desc: 'เข้าร่วม Discord เพื่อพูดคุย แชร์ทริค และรับของแจกฟรีมากมาย',
-        color: 'text-purple-400'
-    }
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Features = () => {
+    const { t } = useLanguage();
+
+    const features = [
+        {
+            icon: ShieldCheck,
+            title: t.features.safe,
+            desc: t.features.safeDesc,
+            color: 'text-green-400'
+        },
+        {
+            icon: BookOpen,
+            title: t.features.teach,
+            desc: t.features.teachDesc,
+            color: 'text-blue-400'
+        },
+        {
+            icon: Zap,
+            title: t.features.fast,
+            desc: t.features.fastDesc,
+            color: 'text-yellow-400'
+        },
+        {
+            icon: Users,
+            title: t.features.community,
+            desc: t.features.communityDesc,
+            color: 'text-purple-400'
+        }
+    ];
+
     return (
         <section className="container mx-auto px-4 py-24">
             <motion.div
@@ -69,7 +72,7 @@ const Features = () => {
                     className="flex items-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-[#5865F2]/50 hover:-translate-y-1"
                 >
                     <img src="/images/discord.jpg" className="w-6 h-6 rounded-full" alt="Discord" />
-                    Join Discord
+                    {t.features.join}
                 </a>
                 <a
                     href="https://www.facebook.com/profile.php?id=61578707159949"
@@ -78,7 +81,7 @@ const Features = () => {
                     className="flex items-center gap-3 bg-[#1877F2] hover:bg-[#166fe5] text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-[#1877F2]/50 hover:-translate-y-1"
                 >
                     <Facebook className="w-6 h-6" />
-                    Facebook Fanpage
+                    {t.features.fb}
                 </a>
                 <a
                     href="https://youtube.com/@novterss"
@@ -87,7 +90,7 @@ const Features = () => {
                     className="flex items-center gap-3 bg-[#FF0000] hover:bg-[#cc0000] text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-[#FF0000]/50 hover:-translate-y-1"
                 >
                     <Youtube className="w-6 h-6" />
-                    Watch Tutorials
+                    {t.features.yt}
                 </a>
             </motion.div>
         </section>

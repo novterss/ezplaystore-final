@@ -10,7 +10,7 @@ export const premiumProducts = [
     },
     {
         id: 2,
-        name: 'EFI Spoofer HWID',
+        name: 'EzSpooferHWID',
         price: 400,
         originalPrice: 500,
         image: '/images/spoofer.png',

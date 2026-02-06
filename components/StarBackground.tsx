@@ -62,9 +62,9 @@ const StarBackground = () => {
     useEffect(() => {
         setMounted(true);
         setStarStyles({
-            small: generateStars(700),
-            medium: generateStars(200),
-            large: generateStars(100)
+            small: generateStars(200), // Reduced from 700
+            medium: generateStars(50), // Reduced from 200
+            large: generateStars(20)   // Reduced from 100
         });
 
         let animationFrameId: number;
@@ -115,7 +115,7 @@ const StarBackground = () => {
                 style={{ x: bgX, y: bgY }}
             >
                 <Image
-                    src="/images/bg.png"
+                    src="/images/websitebg.jpg"
                     alt="Background"
                     fill
                     className="object-cover object-center"

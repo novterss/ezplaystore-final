@@ -35,10 +35,10 @@ const BackToTop = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-28 right-8 z-[90] p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white rounded-full shadow-lg transition-all active:scale-95"
+                    className="fixed bottom-8 right-8 z-[90] p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white rounded-full shadow-lg transition-all active:scale-95 group"
                     aria-label="Back to Top"
                 >
-                    <ChevronUp className="w-5 h-5" />
+                    <ChevronUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
                 </motion.button>
             )}
         </AnimatePresence>
